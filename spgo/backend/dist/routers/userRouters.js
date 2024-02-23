@@ -20,8 +20,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const userValidator_1 = require("../middlewares/validators/userValidator");
 const userController = __importStar(require("../controllers/userController"));
 const router = (0, express_1.Router)();
 router.get('/ping', userController.ping);
 router.get('/usuarios', userController.listUsers);
+router.post('/usuario', userValidator_1.createValidator, userController.createUser);
 exports.default = router;
