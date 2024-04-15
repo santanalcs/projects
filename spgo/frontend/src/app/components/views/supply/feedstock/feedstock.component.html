@@ -1,0 +1,24 @@
+<mat-card class="mt-main-comp-view mat-elevation-z3">
+    <form class="form-col-1">
+        <mat-form-field>
+            <mat-label>Descrição:</mat-label> 
+            <input  matInput type="text" name="description">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Classificação:</mat-label>
+            <select  matNativeControl name="rating" (change)="onChangeRating($event)" #ratingSelect>
+                <option  label = "---selecione um valor---"></option> 
+                <option  value = "equipamento" >Equipamento</option> 
+                <option  value = "material" >Material</option> 
+                <option  value = "serviço" >Serviço</option>  
+            </select> 
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Unidade ou Medida:" name="measures-unit">
+        </mat-form-field>
+    </form>
+    <div class="div-form-col-1">
+        <button mat-raised-button color="primary">Cadastrar</button>
+        <!--span>Não tem cadastro?</span><a routerLink="/usuario/cadastrar">Clique aqui</a-->
+    </div>
+</mat-card>

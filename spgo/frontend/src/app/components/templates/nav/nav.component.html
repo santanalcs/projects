@@ -1,0 +1,87 @@
+<mat-drawer-container class="container" autosize>
+    <mat-drawer #drawer class="sidenav" color="primary" mode="side">
+        <mat-nav-list class="nav-list">
+            <button mat-menu-item [matMenuTriggerFor]="peopele" (click)="checkRegisters()" (menuClosed)="closedRegisters()">
+                <strong>
+                    <i class="material-icons">edit_note</i>Cadastros
+                    <i class="material-icons arrow">{{arrowRegisters}}</i>
+                </strong>
+            </button>
+            <mat-menu #peopele="matMenu">
+                <a mat-list-item routerLink="usuario/cadastrar">
+                    <i class="material-icons">perm_identity</i>Cadastrar Usuário 
+                </a>
+                <a mat-list-item routerLink="colaborador/cadastrar">
+                    <i class="material-icons">engineering</i>Cadastrar Colaborador 
+                </a>
+                <a mat-list-item routerLink="insumo/cadastrar">
+                    <i class="material-icons">inventory_2</i>Cadastrar Insumo 
+                </a>
+                <a mat-list-item routerLink="unidade/medida/cadastrar">
+                    <i class="material-icons">straighten</i>Unidade Medida 
+                </a>
+            </mat-menu>
+            <button mat-menu-item [matMenuTriggerFor]="lists" (mousedown)="checkLists()" (menuClosed)="closedLists()">
+                <strong>
+                    <i class="material-icons">format_list_numbered</i>Listas
+                    <i class="material-icons arrow">{{arrowLists}}</i>
+                </strong>
+            </button>
+            <mat-menu #lists="matMenu">
+                <button mat-menu-item routerLink="listar/usuarios">
+                    <i class="material-icons">group</i>Lista de Usuários
+                </button>
+                <button mat-menu-item routerLink="usuario/redefinir/senha">
+                    <i class="material-icons">lock_reset</i>Redefinir Senha
+                </button>
+            </mat-menu>
+            <button mat-menu-item [matMenuTriggerFor]="works" (mousedown)="checkWorks()" (menuClosed)="closedWorks()">
+                <strong>
+                    <i class="material-icons" >roofing</i>Obras
+                    <i class="material-icons arrow">{{arrowWorks}}</i>
+                    
+                </strong>
+            </button>
+            <mat-menu #works="matMenu">
+                <button mat-menu-item>
+                    <i class="material-icons">edit_square</i>Registrar Etapa        
+                </button>
+                <button mat-menu-item>
+                    <i class="material-icons">foundation</i>Executar Etapa
+                </button>
+            </mat-menu>
+            <button mat-menu-item [matMenuTriggerFor]="login" (mousedown)="checkLogin()" (menuClosed)="closedLogin()">
+                <strong>
+                    <i class="material-icons">lock_open</i>Entrar
+                    <i class="material-icons arrow">{{arrowLogin}}</i>
+                </strong>
+            </button>
+            <mat-menu #login="matMenu">
+                <button mat-menu-item routerLink="/login">
+                    <i class="material-icons">key</i>Login
+                </button>
+                <button mat-menu-item routerLink="usuario/redefinir/senha">
+                    <i class="material-icons">lock_reset</i>Redefinir Senha
+                </button>
+            </mat-menu>
+            <button mat-menu-item (click)="logout()">
+                <strong>
+                    <i class="material-icons">lock</i>Sair
+                </strong> 
+            </button>
+        </mat-nav-list>
+    </mat-drawer>
+  
+    <div class="sidenav-content">
+        <button  mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span class="s-menu" (click)="drawer.toggle()">Menu</span>
+        <div class="main-card">
+            <span class="card-title"><strong>Sistema de Plano e Gestão em Obras</strong></span>
+            <app-card></app-card>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</mat-drawer-container>
+  

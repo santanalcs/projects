@@ -1,0 +1,29 @@
+<mat-card class="mt-main-comp-view mat-elevation-z3">
+    <form class="form-col-1" #formRegistration="ngForm">
+        <mat-form-field>
+            <mat-label>Nome:</mat-label>
+            <input  matInput type="text" [(ngModel)]="user.name" name="name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email:</mat-label>
+            <input matInput type="email" [(ngModel)]="user.email" placeholder="E-mail Válido" name="email">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Senha:</mat-label>
+            <input matInput type="password" [(ngModel)]="user.password1" placeholder="Mínimo 6 Caracteres" name="password1">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Confirmar Senha:</mat-label>
+            <input matInput type="password" [(ngModel)]="user.password2" placeholder="Confirme" name="password2">
+        </mat-form-field>
+    </form>
+    <div class="div-form-col-1">
+        <button mat-raised-button (click)="create()" color="primary">Cadastrar</button>
+        <!--span>Fazer</span><a routerLink="/">login</a-->
+            <span>
+                <a routerLink="">
+                    <i class="material-icons vertical-middle">key</i>Fazer login
+                </a>
+            </span>
+    </div>
+</mat-card>

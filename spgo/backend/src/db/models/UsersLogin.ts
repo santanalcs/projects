@@ -1,4 +1,4 @@
-import { Model, DataType, DataTypes } from "sequelize";
+import { Model, DataType, DataTypes, Sequelize } from "sequelize";
 import { connection } from "../instances/mysql";
 
 export interface UsersLogin extends Model{

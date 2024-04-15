@@ -1,0 +1,7 @@
+.home {
+    background-image: url('../../../../assets/img/logo2.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 75vh;
+    background-position: 50% 25%;
+}

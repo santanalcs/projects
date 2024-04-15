@@ -1,0 +1,9 @@
+mat-dialog-actions {
+    display: flex;
+    justify-content:space-around;
+}
+
+p {
+    color: #3d5f9e;
+    font-weight: 500;
+}

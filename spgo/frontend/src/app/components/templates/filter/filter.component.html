@@ -1,0 +1,13 @@
+<div class="div-t-bar-list  mt-main-comp-view mat-elevation-z4">
+    <button mat-raised-button class="btn" color="primary" >Voltar</button>
+    <form #formSearch="ngForm">
+        <div class="div-t-bar-filter">
+            <button mat-raised-button (click)="search()" color="primary" [disabled]="disabled">
+                <i class="material-icons btn-search">search</i>
+            </button>
+            <input matInput class="filter-input" [(ngModel)]="filtro" (keyup)="btnSearch()" 
+                    placeholder="{{searchField}}" name="search" autocomplete="off">
+            <button mat-raised-button (click)="clear()" color="primary" >Limpar</button>
+        </div>
+    </form>  
+</div>
