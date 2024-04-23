@@ -11,6 +11,7 @@ import { HomeComponent } from './components/views/home/home.component';
 import { authGuard } from './guards/auth.guard.guard';
 import { UsersListComponent } from './components/lists/users-list/users-list.component';
 import { TesteListComponent } from './components/lists/teste-list/teste-list.component';
+import { UnitsListComponent } from './components/lists/units-list/units-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'colaborador/cadastrar', component: EmployeeComponent, canActivate: [authGuard] },
   { path: 'unidade/medida/cadastrar', component: MeasuresUnitComponent, canActivate: [authGuard] },
   { path: 'insumo/cadastrar', component: FeedstockComponent, canActivate: [authGuard] },
-  { path: 'listar/usuarios', component: UsersListComponent },
+  { path: 'listar/usuarios', component: UsersListComponent, canActivate: [authGuard] },
+  { path: 'listar/unidades/medidas', component: UnitsListComponent, canActivate: [authGuard] },
   { path: 'listar/testes', component: TesteListComponent },
 ]
 

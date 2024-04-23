@@ -6,3 +6,7 @@ export interface User {
     success: any,
     error: any,
 }
+
+export interface AddUser {
+    pageOrigin: boolean,
+}

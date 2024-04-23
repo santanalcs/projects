@@ -4,7 +4,8 @@ import path from "path";
 import dotenv from "dotenv";
 
 import userRouters from "./routers/userRouters";
-import authRouters from "./routers/authRouters"
+import authRouters from "./routers/authRouters";
+import unitRouters from "./routers/unitRouters"
 
 dotenv.config();
 
@@ -14,7 +15,7 @@ server.use(express.static(path.join(__dirname, 'puclic')));
 server.use(express.json());
 server.use(express.urlencoded({extended:true}));
 
-server.use([userRouters, authRouters]);
+server.use([userRouters, authRouters, unitRouters]);
 
 server.use((req: Request, res: Response) => {
     res.status(404);

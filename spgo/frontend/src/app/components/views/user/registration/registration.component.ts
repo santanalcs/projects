@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { CardService } from 'src/app/components/templates/card.service';
 import { AuthGuardService } from 'src/app/guards/authguard.service';
@@ -17,6 +17,8 @@ import { NgForm } from '@angular/forms';
 export class RegistrationComponent {
   private  msg: string = "";
   private isError: boolean = false;
+
+  disabled: boolean = true;
    
   public user: User = {
     name: '',
@@ -29,9 +31,9 @@ export class RegistrationComponent {
 
   constructor(private cardService: CardService, private authGuardService: AuthGuardService, 
     private router: Router, private authService: AuthService, private userService: UserService,
-    private snackBar:SnackBarService) {
+    private snackBar:SnackBarService, private activatedRoute: ActivatedRoute) {
     cardService.subtitle = {
-      text: 'Cadastro do Usuário',
+      text: 'Cadastrar Usuário',
       icon: 'perm_identity',
     }
   }
@@ -45,7 +47,9 @@ export class RegistrationComponent {
         this.authGuardService.guard.name = res.user.name;
       }
     })
+    this.userService.origin.pageOrigin?this.disabled = false:true;
   }
+  
   public create():void{
     this.userService.create(this.user).subscribe(res => {
       if(res.error){
@@ -63,4 +67,7 @@ export class RegistrationComponent {
     })
   }
 
+  public comeBack (): void{
+    history.back()
+  }
 }

@@ -39,7 +39,7 @@ export class TesteListComponent {
     }) 
   }
   public testando(e: any, value: any):void{
-    let array
+    //let array
     if(e.checked){
       this.filter.push({
         id: value.id
@@ -50,7 +50,8 @@ export class TesteListComponent {
         if(this.filter[i].id == value.id)
           indice = i
       }
-    array = this.filter.splice(indice, 1)
+    //array = this.filter.splice(indice, 1)
+    this.filter.splice(indice, 1)
     }
     console.log(this.filter)
   }

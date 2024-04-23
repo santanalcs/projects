@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../views/user/auth.service';
 import { DialogEditComponent } from '../../views/user/registration/dialog-edit/dialog-edit.component';
 import { SnackBarService } from 'src/app/snackbar/snackbar.service';
+import { FilterService } from '../../templates/filter.service';
+import { PaginatorService } from '../../templates/paginator.service';
 
 @Component({
   selector: 'app-users-list',
@@ -25,29 +27,37 @@ export class UsersListComponent {
 
   users: any = [];
 
-  pageSize: number = 0;
-  qtdPage: number = 0;
+  //pageSize: number = 0;
+  //qtdPage: number = 0;
   currentPage: number = 0;
   totalSize: number = 0;
   sizeOptions: any = [5, 10, 15];
 
-  searchField: string = "Busca por Nome"
+  searchField: string = "Filtrar por Nome";
 
   msg: string = "";
   disabled: boolean = true;
   dataEdit: any = {
     name: '',
-    level: 0
+    level: 0,
   }
 
   @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator | undefined;
 
   constructor(private userService: UserService, private cardService: CardService, private router: Router, 
     private authService: AuthService, private authGuardService: AuthGuardService, private dialog: MatDialog,
-    private snackBar:SnackBarService) {
+    private filterService: FilterService, private paginatorService: PaginatorService, private snackBar:SnackBarService) {
     cardService.subtitle = {
       text: 'Lista de Usuários',
       icon: 'group',
+    }
+
+    paginatorService.paginator = {
+      pageSize: 0,
+    }
+
+    userService.origin = {
+      pageOrigin: false,
     }
   }
   
@@ -69,31 +79,41 @@ export class UsersListComponent {
   }
 
   public changePageSize(event: any){
-  this.pageSize = event;  
-  this.iterator(this.currentPage);
+  //this.pageSize = event;
+    this.paginatorService.paginator.pageSize = event;  
+    this.paginate(this.currentPage);
   }
-  public iterator(event: any) {
+  public paginate(event: any) {
     this.currentPage = event;
-    const end = (event + 1) * this.pageSize;
-    const start = event * this.pageSize;
-    const dataPage = this.users.slice(start, end);
-    this.dataSource = dataPage;
+    //const end = (event + 1) * this.pageSize;
+    //const start = event * this.pageSize;
+    //const dataPage = this.users.slice(start, end);
+    //this.dataSource = dataPage;
+    this.dataSource = this.paginatorService.iterator(event, this.users);
+  }
+
+  public pageOrigin(){
+    this.router.navigate(['/usuario/cadastrar']);
+    this.userService.origin.pageOrigin = true;
   }
 
   public search(event: string){
     if(event == ''){
       this.users = [];
       this.getAll();
-      this.iterator(this.currentPage);
+      this.currentPage = 0;
       return
     }
-    let filter:any = [];
+    /*let filter:any = [];
+    filter = this.filterService.filterName(this.users, event)
+    console.log(filter)
     filter = () => {
       return this.users.filter((data: User) => data.name.toLowerCase().indexOf(event.toLowerCase()) > -1);
-    }
-    this.users = filter();
+    }*/
+    this.users = this.filterService.filterName(this.users, event);
     this.totalSize = this.users.length;
-    this.iterator(this.currentPage);
+    this.currentPage = 0;
+    this.paginate(this.currentPage);
   }
 
   public getAll() {
@@ -103,15 +123,19 @@ export class UsersListComponent {
           id: res.users[i].id,
           name: res.users[i].name,
           email: res.users[i].email,
-          level: res.users[i].allowable_level
+          level: res.users[i].allowable_level,
         })
       }
-      if(this.pageSize == 0){
+      /*if(this.pageSize == 0){
         this.pageSize = this.sizeOptions[0];
+        this.totalSize = this.users.length;
+      }*/
+      if(this.paginatorService.paginator.pageSize == 0){
+        this.paginatorService.paginator.pageSize = this.sizeOptions[0];
         this.totalSize = this.users.length;
       }
       this.totalSize = res.users.length;
-      this.iterator(this.currentPage);
+      this.paginate(this.currentPage);
     }) 
   }
 
@@ -122,7 +146,7 @@ export class UsersListComponent {
     dialogRef.afterClosed().subscribe( (res: boolean) => {
       if(res) {
         this.userService.deleteUser(user.id).subscribe((res) => {
-          this.msg = res.success.msg
+          this.msg = res.success.msg;
           this.users = [];
           this.getAll();
           this.snackBar.showMessage(this.msg, false);

@@ -1,20 +1,31 @@
 <mat-card class="mt-main-comp-view mat-elevation-z3">
-    <form class="form-col-1">
+    <form class="form-col-1" #formMeasuresUnit="ngForm">
         <mat-form-field>
             <mat-label>Símbolo:</mat-label> 
-            <input  matInput type="text" name="symbol">
+            <input  matInput type="text" name="symbol" [(ngModel)]="measure.symbol" autocomplete="off">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Descrição:</mat-label>
-            <input matInput type="text" name="description">
+            <input matInput type="text" name="description"[(ngModel)]="measure.description" autocomplete="off">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Grupo:</mat-label>
-            <input matInput type="text" name="group">
+            <select  matNativeControl name="group" (click)="openListSelect()" #ratingSelect>
+                <option  label = "---selecione um valor---"></option> 
+                <option  value = "{{measure.id_group_criterion}}" selected="{{selected}}">{{groupValue}}</option>   
+            </select> 
         </mat-form-field>
+        <!--mat-form-field>
+            <mat-label>Grupo:</mat-label>
+            <input matInput type="text" name="group" value="{{group}}" (click)="teste()">
+        </mat-form-field-->
     </form>
     <div class="div-form-col-1">
-        <button mat-raised-button color="primary">Cadastrar</button>
+        <div class="div-btn-form">
+            <button mat-raised-button (click)="create()" color="primary">Cadastrar</button>
+            <button mat-raised-button (click)="comeBack()" color="warn" [disabled]="disabled">Voltar</button>
+        </div>
         <!--span>Não tem cadastro?</span><a routerLink="/usuario/cadastrar">Clique aqui</a-->
+        <!--button mat-raised-button color="warn" (click)="cadastrar()">Cancelar</button-->
     </div>
 </mat-card>

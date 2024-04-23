@@ -15,7 +15,7 @@ export class FeedstockComponent {
 
   constructor(private cardService: CardService, private authGuardService: AuthGuardService, private router: Router, private authService: AuthService) {
     cardService.subtitle = {
-      text: "Cadastro de Insumo",
+      text: "Cadastrar Insumo",
       icon: "inventory_2"
     }
   }

@@ -1,18 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { User } from 'src/app/models/user.model';
+import { AddUser, User } from 'src/app/models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  private _add = new BehaviorSubject<AddUser>({
+    pageOrigin: false,
+  })
   
   constructor(private http: HttpClient) { };
 
   private apiUrl = environment.API;
+
+  public get origin():AddUser {
+    return this._add.value;
+  }
+
+  public set origin(value:AddUser) {
+    this._add.next(value);
+  }
 
   public index():Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/usuarios`);

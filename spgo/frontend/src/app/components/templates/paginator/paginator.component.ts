@@ -46,6 +46,5 @@ export class PaginatorComponent {
     this.pageSize = e.pageSize;
     this.cPage.emit(this.currentPage);
     this.pSize.emit(this.pageSize);
-    // console.log("handlePage " + this.pageSize);
   }
 }

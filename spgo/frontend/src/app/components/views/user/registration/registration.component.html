@@ -18,7 +18,10 @@
         </mat-form-field>
     </form>
     <div class="div-form-col-1">
-        <button mat-raised-button (click)="create()" color="primary">Cadastrar</button>
+        <div class="div-btn-form">
+            <button mat-raised-button (click)="create()" color="primary">Cadastrar</button>
+            <button mat-raised-button (click)="comeBack()" color="warn" [disabled]="disabled">Voltar</button>
+        </div>
         <!--span>Fazer</span><a routerLink="/">login</a-->
             <span>
                 <a routerLink="">

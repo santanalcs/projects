@@ -39,6 +39,8 @@ import { PaginatorComponent } from './components/templates/paginator/paginator.c
 import { ConfirmComponent } from './components/shared/dialog/confirm/confirm.component';
 import { DialogEditComponent } from './components/views/user/registration/dialog-edit/dialog-edit.component';
 import { TesteListComponent } from './components/lists/teste-list/teste-list.component';
+import { DialogListGroupsComponent } from './components/shared/dialog/dialog-list-groups/dialog-list-groups.component';
+import { UnitsListComponent } from './components/lists/units-list/units-list.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { TesteListComponent } from './components/lists/teste-list/teste-list.com
     ConfirmComponent,
     DialogEditComponent,
     TesteListComponent,
+    DialogListGroupsComponent,
+    UnitsListComponent,
   ],
   imports: [
     BrowserModule,

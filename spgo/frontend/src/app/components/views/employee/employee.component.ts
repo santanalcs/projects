@@ -13,7 +13,7 @@ export class EmployeeComponent {
 
   constructor(private cardService: CardService, private authGuardService: AuthGuardService, private router: Router, private authService: AuthService) {
     cardService.subtitle = {
-      text: 'Cadastro do Colaborador',
+      text: 'Cadastrar Colaborador',
       icon: 'engineering',
     }
   }

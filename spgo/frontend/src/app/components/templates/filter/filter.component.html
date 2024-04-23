@@ -1,13 +1,18 @@
 <div class="div-t-bar-list  mt-main-comp-view mat-elevation-z4">
-    <button mat-raised-button class="btn" color="primary" >Voltar</button>
+    <div class="btn-div">
+        <button mat-raised-button (click)="btnAdd()" color="primary">
+            <i class="material-icons vertical-middle">library_add</i><strong>Adicionar</strong>
+        </button>
+        <!--button mat-raised-button color="warn" (click)="comeBack()">Voltar</button-->
+    </div>
     <form #formSearch="ngForm">
         <div class="div-t-bar-filter">
-            <button mat-raised-button (click)="search()" color="primary" [disabled]="disabled">
-                <i class="material-icons btn-search">search</i>
-            </button>
-            <input matInput class="filter-input" [(ngModel)]="filtro" (keyup)="btnSearch()" 
+            <input matInput class="filter-input" [(ngModel)]="filtro" (keyup)="inputSearch()" 
                     placeholder="{{searchField}}" name="search" autocomplete="off">
-            <button mat-raised-button (click)="clear()" color="primary" >Limpar</button>
+            <button class="btn-search" [ngClass]="{'blue': disabled}" [disabled]="disabled">
+                <i class="material-icons ico-search">filter_alt</i>
+            </button>
+            <button mat-raised-button (click)="clear()" color="warn" ><i class="material-icons vertical-middle">filter_alt_off</i>Limpar</button>
         </div>
     </form>  
 </div>
