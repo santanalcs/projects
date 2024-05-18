@@ -4,30 +4,34 @@
         <table mat-table [dataSource]="dataSource" matSort aria-label="Elements">
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-                <td mat-cell *matCellDef="let user">{{user.id}}</td>
+                <td mat-cell *matCellDef="let feedtock">{{feedtock.id}}</td>
             </ng-container>
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
-                <td mat-cell *matCellDef="let user">{{user.name}}</td>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
+                <td mat-cell *matCellDef="let feedstock">{{feedstock.description}}</td>
             </ng-container>
-            <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-                <td mat-cell *matCellDef="let user">{{user.email}}</td>
+            <ng-container matColumnDef="rating">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Classificação</th>
+                <td mat-cell *matCellDef="let feedtock">{{feedtock.rating}}</td>
             </ng-container>
-            <ng-container matColumnDef="level">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nivel</th>
-                <td mat-cell *matCellDef="let user">{{user.level}}</td>
+            <ng-container matColumnDef="measure">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Unidade ou Medida</th>
+                <td mat-cell *matCellDef="let feedstock">{{feedstock.measure_unit}}</td>
+            </ng-container>
+            <ng-container matColumnDef="id-measure-unit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Unidade ou Medida</th>
+                <td mat-cell *matCellDef="let feedstock">{{feedstock.id_measure_unit}}</td>
             </ng-container>
             <div>
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 30px;">Ações</th>
-                    <td mat-cell *matCellDef="let user">
-                        <button mat-icon-button  class="ver" (click)="updatesLevel(user)" [disabled]="disabled" title="Alterar">
+                    <td mat-cell *matCellDef="let feedstock">
+                        <button mat-icon-button (click)="updatesFeedstock(feedstock)" [disabled]="disabled" title="Alterar">
                             <mat-icon [ngClass]="{'blue': !disabled}">edit_note</mat-icon>
                         </button>
-                        <button mat-icon-button (click)="confirmDelete(user)" [disabled]="disabled" title="Excluir">
+                        <!--button mat-icon-button (click)="confirmDelete(user)" [disabled]="disabled" title="Excluir">
                             <mat-icon [ngClass]="{'red': !disabled}">delete_forever</mat-icon>
-                        </button>
+                        </button-->
                     </td>
                 </ng-container>
             </div>

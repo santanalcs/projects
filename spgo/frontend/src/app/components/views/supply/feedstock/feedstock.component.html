@@ -1,24 +1,26 @@
 <mat-card class="mt-main-comp-view mat-elevation-z3">
-    <form class="form-col-1">
+    <form class="form-col-1" #formFeedstocks="ngForm">
         <mat-form-field>
             <mat-label>Descrição:</mat-label> 
-            <input  matInput type="text" name="description">
+            <input  matInput type="text" name="description" [(ngModel)]="feedstock.description">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Classificação:</mat-label>
-            <select  matNativeControl name="rating" (change)="onChangeRating($event)" #ratingSelect>
-                <option  label = "---selecione um valor---"></option> 
-                <option  value = "equipamento" >Equipamento</option> 
-                <option  value = "material" >Material</option> 
-                <option  value = "serviço" >Serviço</option>  
+            <select  matNativeControl name="rating" (change)="onChangeRating($event)" #ratingsSelect>
+                <option  label = "---selecione um valor---"></option>
+                <option *ngFor="let rating of ratings" [value]="rating.value">{{ rating.name }}</option>  
             </select> 
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="text" placeholder="Unidade ou Medida:" name="measures-unit">
+            <mat-label>Unidade ou Medida:</mat-label>
+            <select  matNativeControl name="measure-unit" (click)="openListSelect()" #measuresUnitSelect>
+                <option  label = "---selecione um valor---"></option> 
+                <option  value = "{{feedstock.id_measure_unit}}" selected="{{selected}}">{{feedstock.measure_unit}}</option>   
+            </select> 
         </mat-form-field>
     </form>
     <div class="div-form-col-1">
-        <button mat-raised-button color="primary">Cadastrar</button>
-        <!--span>Não tem cadastro?</span><a routerLink="/usuario/cadastrar">Clique aqui</a-->
+        <button mat-raised-button (click)="create()" color="primary">Cadastrar</button>
+        <button mat-raised-button (click)="comeBack()" color="warn" [disabled]="disabled">Voltar</button>
     </div>
 </mat-card>

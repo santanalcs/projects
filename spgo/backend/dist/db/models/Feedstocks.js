@@ -1,29 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.assGroupsCriterions = exports.Measure = void 0;
+exports.assMeasuresUnit = exports.Feedstock = void 0;
 const sequelize_1 = require("sequelize");
 const mysql_1 = require("../instances/mysql");
-const GroupsCriterions_1 = require("./GroupsCriterions");
-exports.Measure = mysql_1.connection.define('measure', {
+const MeasuresUnit_1 = require("./MeasuresUnit");
+exports.Feedstock = mysql_1.connection.define('feedstock', {
     id: {
         primaryKey: true,
         autoIncrement: true,
         type: sequelize_1.DataTypes.INTEGER,
     },
-    symbol: {
-        type: sequelize_1.DataTypes.STRING,
-    },
     description: {
         type: sequelize_1.DataTypes.STRING,
     },
-    id_group_criterion: {
+    rating: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    id_measure_unit: {
         type: sequelize_1.DataTypes.INTEGER,
     }
 }, {
-    tableName: 'measures_unit',
+    tableName: 'feedstocks',
     timestamps: true
 });
-exports.assGroupsCriterions = GroupsCriterions_1.Group.hasMany(exports.Measure, {
+exports.assMeasuresUnit = exports.Feedstock.belongsTo(MeasuresUnit_1.Measure, {
     constraints: true,
-    foreignKey: 'id_group_criterion'
+    foreignKey: 'id_measure_unit'
 });

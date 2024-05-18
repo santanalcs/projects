@@ -42,12 +42,16 @@ export class RegistrationComponent {
 
   ngOnInit():void{
     this.authService.auth().subscribe(res => {
-      if(res != null){
+      if(res){
         this.authGuardService.guard.token = res.user.token;
         this.authGuardService.guard.name = res.user.name;
       }
+      
     })
-    this.userService.origin.pageOrigin?this.disabled = false:true;
+    if(this.userService.origin.pageOrigin){
+      this.userService.origin.pageOrigin = false
+      this.disabled = false
+    }
   }
   
   public create():void{
@@ -68,6 +72,7 @@ export class RegistrationComponent {
   }
 
   public comeBack (): void{
-    history.back()
+    history.back();
+    !this.userService.origin.pageOrigin?this.disabled=true:false;
   }
 }

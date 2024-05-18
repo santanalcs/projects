@@ -52,10 +52,13 @@ export class MeasuresUnitComponent {
         this.router.navigate(['/login']);
         return
       }
-      //this.authGuardService.guard.token = res.user.token;
+      this.authGuardService.guard.token = res.user.token;
       this.authGuardService.guard.name = res.user.name;
     })
-    this.measuresUnitService.origin.pageOrigin?this.disabled = false:true;
+    if(this.measuresUnitService.origin.pageOrigin){
+      this.measuresUnitService.origin.pageOrigin = false
+      this.disabled = false
+    }
   }
 
   public openListSelect(): void {
@@ -97,6 +100,7 @@ export class MeasuresUnitComponent {
   }
 
   public comeBack (): void{
-    history.back()
+    history.back();
+    !this.measuresUnitService.origin.pageOrigin?this.disabled = true:false;
   }
 }

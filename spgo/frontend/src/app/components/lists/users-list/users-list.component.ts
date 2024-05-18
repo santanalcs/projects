@@ -37,6 +37,7 @@ export class UsersListComponent {
 
   msg: string = "";
   disabled: boolean = true;
+  addHidden: boolean = false;
   dataEdit: any = {
     name: '',
     level: 0,
@@ -55,10 +56,6 @@ export class UsersListComponent {
     paginatorService.paginator = {
       pageSize: 0,
     }
-
-    userService.origin = {
-      pageOrigin: false,
-    }
   }
   
   ngOnInit(): void {
@@ -70,7 +67,7 @@ export class UsersListComponent {
     this.authService.auth().subscribe(res => {
       if(res == null){
         this.router.navigate(['/login']);
-        return;
+        return
       }
       this.authGuardService.guard.token = res.user.token;
       this.authGuardService.guard.name = res.user.name;

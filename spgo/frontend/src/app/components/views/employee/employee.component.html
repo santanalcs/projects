@@ -1,25 +1,20 @@
 <mat-card class="mt-main-comp-view mat-elevation-z3">
-    <form class="form-col-1">
+    <form class="form-col-1" #formEmployee="ngForm">
         <mat-form-field>
             <mat-label>Nome:</mat-label>
-            <input  matInput type="text" name="name">
+            <input  matInput type="text" [(ngModel)]="employee.name" name="name">
         </mat-form-field>
         <mat-form-field>
             <mat-label>CPF:</mat-label>
-            <input matInput type="text" name="cpf">
+            <input matInput type="text" maxlength="{{ maxlength_input_cpf }}" [(ngModel)]="employee.cpf" (keyup)="maskCpfCnpj()" name="cpf">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Celular:</mat-label>
-            <input matInput type="tel" name="celphone">
+            <input matInput type="tel" maxlength="{{ maxlength_input_tel }}" [(ngModel)]="employee.cel_phone" (keyup)="maskTel()" name="celphone">
         </mat-form-field>
     </form>
     <div class="div-form-col-1">
-        <button mat-raised-button color="primary">Cadastrar</button>
-        <!--span>Fazer</span><a routerLink="/">login</a-->
-            <span>
-                <a routerLink="/">
-                    <i class="material-icons vertical-middle">key</i>Fazer login
-                </a>
-            </span>
+        <button mat-raised-button (click)="create()" color="primary">Cadastrar</button>
+        <button mat-raised-button (click)="comeBack()" color="warn" [disabled]="disabled">Voltar</button>
     </div>
 </mat-card>

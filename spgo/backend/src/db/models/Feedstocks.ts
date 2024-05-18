@@ -1,35 +1,34 @@
 import { Model, DataTypes } from "sequelize";
 import { connection } from "../instances/mysql";
-import { Group } from "./GroupsCriterions";
+import { Measure } from "./MeasuresUnit";
 
-export interface MeasuresUnit extends Model {
+export interface Feedstocks extends Model {
     id: number,
-    symbol: string,
     description: string,
-    id_group_criterion: number,
+    rating: string,
+    id_measure_unit: number
 }
-
-export const Measure = connection.define<MeasuresUnit>('measure', {
+export const Feedstock = connection.define<Feedstocks> ('feedstock', {
     id:{
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER,
     },
-    symbol: {
-        type: DataTypes.STRING,
-    },
     description: {
         type: DataTypes.STRING,
     },
-    id_group_criterion: {
+    rating: {
+        type: DataTypes.STRING,
+    },
+    id_measure_unit: {
         type: DataTypes.INTEGER,
     }
 }, {
-    tableName: 'measures_unit',
+    tableName: 'feedstocks',
     timestamps: true
 })
 
-export const assGroupsCriterions = Group.hasMany(Measure, {
+export const assMeasuresUnit = Feedstock.belongsTo(Measure, {
     constraints: true,
-    foreignKey: 'id_group_criterion'
+    foreignKey:'id_measure_unit'
 })

@@ -30,6 +30,7 @@ export class UnitsListComponent {
   sizeOptions: any = [5, 10, 15];
 
   searchField: string = "Filtrar por Descrição";
+  addHidden: boolean = false;
 
   msg: string = "";
 

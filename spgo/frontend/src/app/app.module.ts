@@ -41,6 +41,10 @@ import { DialogEditComponent } from './components/views/user/registration/dialog
 import { TesteListComponent } from './components/lists/teste-list/teste-list.component';
 import { DialogListGroupsComponent } from './components/shared/dialog/dialog-list-groups/dialog-list-groups.component';
 import { UnitsListComponent } from './components/lists/units-list/units-list.component';
+import { DialogListUnitsComponent } from './components/shared/dialog/dialog-list-units/dialog-list-units.component';
+import { FeedstockListComponent } from './components/lists/feedstock-list/feedstock-list.component';
+import { FeedstockDialogEditionComponent } from './components/views/supply/feedstock/feedstock-dialog-edition/feedstock-dialog-edition.component';
+import { EmployeeListComponent } from './components/lists/employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,10 @@ import { UnitsListComponent } from './components/lists/units-list/units-list.com
     TesteListComponent,
     DialogListGroupsComponent,
     UnitsListComponent,
+    DialogListUnitsComponent,
+    FeedstockListComponent,
+    FeedstockDialogEditionComponent,
+    EmployeeListComponent,
   ],
   imports: [
     BrowserModule,

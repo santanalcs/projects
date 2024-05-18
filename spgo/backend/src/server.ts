@@ -5,17 +5,22 @@ import dotenv from "dotenv";
 
 import userRouters from "./routers/userRouters";
 import authRouters from "./routers/authRouters";
-import unitRouters from "./routers/unitRouters"
+import unitRouters from "./routers/unitRouters";
+import feedstockRouters from "./routers/feedstockRouters"
+import employeeRouters from "./routers/employeeRouters"
 
 dotenv.config();
 
 const server = express();
-server.use(cors());
+//server.use(cors());
+server.use(cors({
+    origin: 'http://localhost:4200'
+}));
 server.use(express.static(path.join(__dirname, 'puclic')));
 server.use(express.json());
 server.use(express.urlencoded({extended:true}));
 
-server.use([userRouters, authRouters, unitRouters]);
+server.use([userRouters, authRouters, unitRouters, feedstockRouters, employeeRouters]);
 
 server.use((req: Request, res: Response) => {
     res.status(404);

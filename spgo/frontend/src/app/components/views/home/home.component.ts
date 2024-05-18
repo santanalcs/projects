@@ -15,14 +15,11 @@ export class HomeComponent{
       text: 'Home',
       icon: 'home',
     }
+    authGuardService.guard.name;
   }
 
   ngOnInit():void{
     this.authService.auth().subscribe(res => {
-      if(res == null){
-        this.router.navigate(['/login']);
-        return;
-      }
       this.authGuardService.guard.token = res.user.token;
       this.authGuardService.guard.name = res.user.name;
     })

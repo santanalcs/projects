@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AuthGuardService } from 'src/app/guards/authguard.service';
+import { AuthService } from '../../views/user/auth.service';
 
 @Component({
   selector: 'app-filter',
@@ -11,10 +13,12 @@ export class FilterComponent {
   disabled: boolean = true;
   
   @Input()searchField: string | undefined;
+  @Input()addHidden: boolean | undefined;
 
   @Output() lookup = new EventEmitter<string>();
   @Output() origin = new EventEmitter();
- 
+  @Output() level = new EventEmitter<number>();
+
   public inputSearch(){
     if(this.inputSize == this.filtro.length){
       return;
@@ -25,13 +29,13 @@ export class FilterComponent {
       return;
     }
     this.lookup.emit(this.filtro);
-    this.inputSize ++;
+    this.inputSize++;
     if(this.inputSize > this.filtro.length){
       while(this.inputSize > this.filtro.length){
         this.inputSize --;
       }
       if(this.inputSize == this.filtro.length){
-          this.inputSize = 0;
+        this.inputSize++;
       }
     }
   }

@@ -1,0 +1,35 @@
+<app-card></app-card>
+<div class="card-form">
+<mat-dialog-content class="content">
+    
+    <form class="form-dialog mat-elevation-z3" #formRegistration="ngForm">
+        <mat-form-field>
+            <mat-label>#Id:</mat-label>
+            <input  matInput type="text" value={{data.id}} name="id" [disabled]="true">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nome:</mat-label>
+            <input  matInput type="text" [(ngModel)]="data.description" name="name" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Classificação:</mat-label>
+            <select  matNativeControl name="rating" (change)="onChangeRating($event)" #ratingsSelect>
+                <option  label = "---selecione um valor---"></option>
+                <option *ngFor="let rating of ratings" [selected]="rating.name == data.rating" [value]="rating.value">{{ rating.name }}</option>  
+            </select> 
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Unidade ou Medida:</mat-label>
+            <select  matNativeControl name="measure-unit" (click)="openListSelect()" (change)="onChangeRating($event)" #measuresUnitSelect>
+                <option  label = "---selecione um valor---"></option> 
+                <option  *ngIf="ifDataId" value = "{{data.id_measure_unit}}" selected="selected">{{data.measure_unit}}</option>
+                <option  *ngIf="!ifDataId" value = "{{feedstock.id_measure_unit}}" selected="{{selected}}">{{feedstock.measure_unit}}</option>   
+            </select> 
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button (click)="confirm(data)" color="primary">Enviar</button>
+    <button mat-raised-button (click)="closeDialog()" color="accent">Cancelar</button>
+</mat-dialog-actions>
+</div>

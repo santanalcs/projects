@@ -1,5 +1,5 @@
 <mat-card class="mt-main-comp-view mat-elevation-z3">
-    <app-filter [searchField]="searchField" (lookup)="search($event)" (origin)="pageOrigin()"></app-filter>
+    <app-filter [searchField]="searchField" [addHidden]="addHidden" (lookup)="search($event)" (origin)="pageOrigin()"></app-filter>
     <div class="div-tb-list  mat-elevation-z3">
         <table mat-table [dataSource]="dataSource" matSort aria-label="Elements">
             <ng-container matColumnDef="id">
@@ -18,19 +18,6 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Grupo</th>
                 <td mat-cell *matCellDef="let unit">{{unit.group}}</td>
             </ng-container>
-            <!--div>
-                <ng-container matColumnDef="actions">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 30px;">Ações</th>
-                    <td mat-cell *matCellDef="let user">
-                        <button mat-icon-button  title="Alterar">
-                            <mat-icon [ngClass]="{'blue': !disabled}">edit_note</mat-icon>
-                        </button>
-                        <button mat-icon-button (click)="confirmDelete(user)" [disabled]="disabled" title="Excluir">
-                            <mat-icon [ngClass]="{'red': !disabled}">delete_forever</mat-icon>
-                        </button>
-                    </td>
-                </ng-container>
-            </div-->
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
         </table>
