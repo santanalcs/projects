@@ -1,0 +1,36 @@
+    <app-filter [searchField]="searchField" [addHidden]="addHidden" (lookup)="search($event)"></app-filter>
+    <div class="main-tab-dialog mat-elevation-z3">
+        <table mat-table [dataSource]="dataSource" matSort aria-label="Elements">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+                <td mat-cell *matCellDef="let contractor">{{contractor.id}}</td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+                <td mat-cell *matCellDef="let contractor">{{contractor.name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="type-person">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Pessoa</th>
+                <td mat-cell *matCellDef="let contractor">{{contractor.type_person}}</td>
+            </ng-container>
+            <ng-container matColumnDef="cpf-cnpj">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>CPF/CNPJ</th>
+                <td mat-cell *matCellDef="let contractor">{{contractor.cpf_cnpj}}</td>
+            </ng-container>
+            <div>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 30px;">Ações</th>
+                    <td mat-cell *matCellDef="let contractor">
+                        <button mat-icon-button (click)="closeDialog(contractor)" title="Selecionar">
+                            <mat-icon class="blue">swipe_down</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+            </div>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
+        </table>
+        <!--hr>
+        <app-paginator [totalSize]="totalSize" [currentPage]="currentPage" [sizeOptions]="sizeOptions" 
+        (cPage)="paginate($event)" (pSize)="changePageSize($event)"></app-paginator-->
+    </div>

@@ -1,0 +1,7 @@
+.teste {
+  /*overflow-x: auto;
+  white-space: nowrap*/
+  font-size: 100%;
+  font-size: 4vw;
+  min-width: max-content;
+}

@@ -32,11 +32,11 @@ export class FeedstockDialogEditionComponent {
 
   @ViewChild('measuresUnitSelect') measure!: ElementRef;
 
-  constructor(public dialogRef: MatDialogRef<DialogEditComponent>, @Inject (MAT_DIALOG_DATA) public data: any, 
+  constructor(public dialogRef: MatDialogRef<FeedstockDialogEditionComponent>, @Inject (MAT_DIALOG_DATA) public data: any, 
   private cardService: CardService, private feedstockService: FeedstockService, private dialog: MatDialog){
     cardService.subtitle = {
       text: 'Alterar dados do Insumo',
-      icon: 'edit_note',
+      icon: 'inventory_2',
     }
   }
 

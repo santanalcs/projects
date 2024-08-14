@@ -1,0 +1,29 @@
+<mat-card class="mt-main-comp-view mat-elevation-z3">    
+    <form class="form-col-1" #formCreateContact="ngForm">
+        <mat-form-field>
+            <mat-label>#Empreiteiro:</mat-label>
+            <!--input  matInput type="text" name="contractor" [disabled]="true"-->
+            <select  matNativeControl name="contractor" (click)="openListSelect()" #contractorSelect>
+                <option  label = "---selecione um valor---"></option> 
+                <option  value = "{{contact.id_contractor}}" selected="{{selected}}">{{contact.name_contractor}}</option>   
+            </select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Contato:</mat-label>
+            <input  matInput type="text" [(ngModel)]="contact.contact" name="contact" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Celular/WhatsApp:</mat-label>
+            <input  matInput type="text" maxlength="{{ maxlength_input_tel }}" [(ngModel)]="contact.cel_phone" 
+            (keyup)="maskTel()" name="cel-phone" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email:</mat-label>
+            <input  matInput type="email" [(ngModel)]="contact.email" name="email" autocomplete="off">
+        </mat-form-field>
+    </form>
+    <div class="div-form-col-1">
+        <button mat-raised-button (click)="confirm()" color="primary">Cadastrar</button>
+        <button mat-raised-button (click)="comeBack()" color="warn" [disabled]="disabled">Voltar</button>
+    </div>
+</mat-card>

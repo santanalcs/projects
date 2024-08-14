@@ -14,7 +14,7 @@ export class NavComponent {
   public arrowWorks: string = "arrow_right";
   public arrowLogin: string = "arrow_right";
   public arrowLists: string = "arrow_right";
-
+  
   public registers: boolean = false;
   public works: boolean = false;
   public login: boolean = false;
@@ -33,6 +33,7 @@ export class NavComponent {
     this.lists = true;
     this.arrowLists = "arrow_drop_down";
   }
+
   public checkWorks (){
     this.works = true;
     this.arrowWorks = "arrow_drop_down";    

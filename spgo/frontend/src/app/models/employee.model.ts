@@ -10,3 +10,8 @@ export interface Employee{
 export interface AddEmployee {
     pageOrigin: boolean,
 }
+
+export interface EditEmployee{
+    cpf: string,
+    cel_phone: string,
+}

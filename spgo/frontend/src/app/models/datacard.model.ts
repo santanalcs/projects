@@ -1,4 +1,5 @@
 export interface DataCard {
-    text: string,
+    text?: any,
+    text_dialog?: any,
     icon: string,
 }

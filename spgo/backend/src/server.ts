@@ -8,6 +8,9 @@ import authRouters from "./routers/authRouters";
 import unitRouters from "./routers/unitRouters";
 import feedstockRouters from "./routers/feedstockRouters"
 import employeeRouters from "./routers/employeeRouters"
+import contractorRouters from "./routers/contractorRouters";
+import stepRouters from "./routers/stepRouters";
+import constructionRouters from "./routers/constructionRouters";
 
 dotenv.config();
 
@@ -20,7 +23,12 @@ server.use(express.static(path.join(__dirname, 'puclic')));
 server.use(express.json());
 server.use(express.urlencoded({extended:true}));
 
-server.use([userRouters, authRouters, unitRouters, feedstockRouters, employeeRouters]);
+server.use(
+    [
+        userRouters, authRouters, unitRouters, feedstockRouters,
+        employeeRouters, contractorRouters, stepRouters, constructionRouters
+    ]
+);
 
 server.use((req: Request, res: Response) => {
     res.status(404);

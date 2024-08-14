@@ -22,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { HeaderComponent } from './components/templates/header/header.component';
 import { NavComponent } from './components/templates/nav/nav.component';
@@ -45,6 +46,23 @@ import { DialogListUnitsComponent } from './components/shared/dialog/dialog-list
 import { FeedstockListComponent } from './components/lists/feedstock-list/feedstock-list.component';
 import { FeedstockDialogEditionComponent } from './components/views/supply/feedstock/feedstock-dialog-edition/feedstock-dialog-edition.component';
 import { EmployeeListComponent } from './components/lists/employee-list/employee-list.component';
+import { EmployeeDialogEditionComponent } from './components/views/employee/employee-dialog-edition/employee-dialog-edition.component';
+import { ContractorComponent } from './components/views/contractor/contractor.component';
+import { ContactDialogCreateComponent } from './components/views/contractor/contact/contact-dialog-create/contact-dialog-create.component';
+import { AddressDialogCreateComponent } from './components/views/contractor/address/address-dialog-create/address-dialog-create.component';
+import { ContractorListComponent } from './components/lists/contractor/contractor-list/contractor-list.component';
+import { ContactListComponent } from './components/lists/contractor/contact-list/contact-list.component';
+import { AddressListComponent } from './components/lists/contractor/address-list/address-list.component';
+import { ContactDialogAddComponent } from './components/views/contractor/contact/contact-dialog-add/contact-dialog-add.component';
+import { DialogListContractorComponent } from './components/shared/dialog/dialog-list-contractor/dialog-list-contractor.component';
+import { ContactComponent } from './components/views/contractor/contact/contact.component';
+import { AddressDialogAddComponent } from './components/views/contractor/address/address-dialog-add/address-dialog-add.component';
+import { ContractorDialogEditComponent } from './components/views/contractor/contractor-dialog-edit/contractor-dialog-edit.component';
+import { AddressComponent } from './components/views/contractor/address/address.component';
+import { StepComponent } from './components/views/step/step.component';
+import { StepListComponent } from './components/lists/step-list/step-list.component';
+import { StepDialogEditionComponent } from './components/views/step/step-dialog-edition/step-dialog-edition.component';
+import { CardDialogComponent } from './components/templates/card-dialog/card-dialog.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +89,23 @@ import { EmployeeListComponent } from './components/lists/employee-list/employee
     FeedstockListComponent,
     FeedstockDialogEditionComponent,
     EmployeeListComponent,
+    EmployeeDialogEditionComponent,
+    ContactDialogCreateComponent,
+    AddressDialogCreateComponent,
+    ContractorListComponent,
+    ContractorComponent,
+    ContactListComponent,
+    AddressListComponent,
+    ContactDialogAddComponent,
+    DialogListContractorComponent,
+    ContactComponent,
+    AddressDialogAddComponent,
+    ContractorDialogEditComponent,
+    AddressComponent,
+    StepComponent,
+    StepListComponent,
+    StepDialogEditionComponent,
+    CardDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +128,7 @@ import { EmployeeListComponent } from './components/lists/employee-list/employee
     MatDialogModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatProgressBarModule
   ],
   providers: [LoginComponent],
   bootstrap: [AppComponent]

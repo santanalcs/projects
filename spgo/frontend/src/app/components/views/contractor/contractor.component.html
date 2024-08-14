@@ -1,0 +1,24 @@
+<mat-card class="mt-main-comp-view mat-elevation-z3">
+    <form class="form-col-1" #formContractor="ngForm">
+        <mat-form-field>
+            <mat-label>Nome:</mat-label>
+            <input  matInput type="text" [(ngModel)]="contractor.name" name="name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Pessoa:</mat-label>
+            <select  matNativeControl (change)="onChangePerson($event)" name="person" #personsSelect>
+                <option  label = "---selecione um valor---"></option> 
+                <option  *ngFor="let person of persons" [value]="person.value">{{person.name}}</option>   
+            </select> 
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>CPF/CNPJ:</mat-label>
+            <input matInput type="text" maxlength="{{ maxlength_input_cpf_cnpj }}" [(ngModel)]="contractor.cpf_cnpj" 
+            (keyup)="maskCpfCnpj()" name="cpf-cnpj" autocomplete="off">
+        </mat-form-field>
+    </form>
+    <div class="div-form-col-1">
+        <button mat-raised-button (click)="confirm(contractor)" color="primary">Cadastrar</button>
+        <button mat-raised-button (click)="comeBack()" color="warn" [disabled]="disabled">Voltar</button>
+    </div>
+</mat-card>

@@ -8,7 +8,7 @@ export interface Feedstocks extends Model {
     rating: string,
     id_measure_unit: number
 }
-export const Feedstock = connection.define<Feedstocks> ('feedstock', {
+export const Feedstock = connection.define<Feedstocks> ('feedstocks', {
     id:{
         primaryKey: true,
         autoIncrement: true,

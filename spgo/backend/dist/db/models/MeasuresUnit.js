@@ -4,7 +4,7 @@ exports.assGroupsCriterions = exports.Measure = void 0;
 const sequelize_1 = require("sequelize");
 const mysql_1 = require("../instances/mysql");
 const GroupsCriterions_1 = require("./GroupsCriterions");
-exports.Measure = mysql_1.connection.define('measure', {
+exports.Measure = mysql_1.connection.define('measures', {
     id: {
         primaryKey: true,
         autoIncrement: true,

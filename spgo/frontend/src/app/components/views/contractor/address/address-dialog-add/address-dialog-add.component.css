@@ -1,0 +1,61 @@
+.card-form {
+    margin-right: 10px;
+    width: 710px;
+}
+
+.content {
+    overflow: hidden;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.form-dialog {
+    padding-top: 10px;
+}
+
+mat-form-field {
+    margin: 0px 0px 0px 0px;
+    width: 85%;
+}
+
+app-card {
+    position: relative;
+    top: 7px;
+    text-align: center;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content:space-evenly;
+    margin-left: 22px;
+    width: 92%;
+}
+
+.div-flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 47px;
+    width: 85%;
+}
+
+.div-flex-row mat-form-field {
+    padding: 0px;
+    padding-top: 10px;
+}
+
+#cep {
+    width: 25%;
+    margin-right: 2px;
+}
+
+#city {
+    width: 60%;
+    margin-right: 2px;
+}
+
+#uf {
+    width: 15%;
+}

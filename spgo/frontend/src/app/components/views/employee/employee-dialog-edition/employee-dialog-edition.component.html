@@ -1,0 +1,28 @@
+<app-card></app-card>
+<div class="card-form">
+<mat-dialog-content class="content">
+    
+    <form class="form-dialog mat-elevation-z3" #formRegistration="ngForm">
+        <mat-form-field>
+            <mat-label>#Id:</mat-label>
+            <input  matInput type="text" value={{data.id}} name="id" [disabled]="true">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nome:</mat-label>
+            <input  matInput type="text" [(ngModel)]="employee.name" name="name" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>CPF:</mat-label>
+            <input  matInput type="text" [(ngModel)]="employee.cpf" (keyup)="maskCpfCnpj()" name="cpf" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Celular:</mat-label>
+            <input  matInput type="text" [(ngModel)]="employee.cel_phone" (keyup)="maskTel()" name="cel_phone" autocomplete="off">
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button (click)="confirm(data)" color="primary">Enviar</button>
+    <button mat-raised-button (click)="closeDialog()" color="accent">Cancelar</button>
+</mat-dialog-actions>
+</div>

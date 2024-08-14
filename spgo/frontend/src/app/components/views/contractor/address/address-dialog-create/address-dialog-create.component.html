@@ -1,0 +1,37 @@
+<app-card></app-card>
+<div class="card-form">
+    <mat-dialog-content class="content"> 
+        <form class="form-dialog mat-elevation-z3" #formRegistration="ngForm">
+            <mat-form-field>
+                <mat-label>#Empreiteiro:</mat-label>
+                <input  matInput type="text" [(ngModel)]="data.contractor" name="contractor" [disabled]="true">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Endereço:</mat-label>
+                <input  matInput type="text" [(ngModel)]="address.address" name="address" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Bairro:</mat-label>
+                <input  matInput type="text" [(ngModel)]="address.district" name="district" autocomplete="off">
+            </mat-form-field>
+            <div class="div-flex-row">
+                <mat-form-field id="cep">
+                    <mat-label>CEP:</mat-label>
+                    <input  matInput type="text" maxlength="{{ maxlength_input_tel }}" [(ngModel)]="address.zip_code" (keyup)="maskCep()" name="zip-code" autocomplete="off">
+                </mat-form-field>
+                <mat-form-field id="city">
+                    <mat-label>Cidade:</mat-label>
+                    <input  matInput type="text" [(ngModel)]="address.city" name="city" autocomplete="off">
+                </mat-form-field>
+                <mat-form-field id="uf">
+                    <mat-label>UF:</mat-label>
+                    <input  matInput type="text" [(ngModel)]="address.uf" name="uf" autocomplete="off">
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button (click)="confirm()" color="primary">Enviar</button>
+        <button mat-raised-button (click)="closeDialog()" color="accent">Cancelar</button>
+    </mat-dialog-actions>
+</div>

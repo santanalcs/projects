@@ -4,7 +4,7 @@ exports.assMeasuresUnit = exports.Feedstock = void 0;
 const sequelize_1 = require("sequelize");
 const mysql_1 = require("../instances/mysql");
 const MeasuresUnit_1 = require("./MeasuresUnit");
-exports.Feedstock = mysql_1.connection.define('feedstock', {
+exports.Feedstock = mysql_1.connection.define('feedstocks', {
     id: {
         primaryKey: true,
         autoIncrement: true,

@@ -10,6 +10,8 @@ import { FilterService } from '../../templates/filter.service';
 import { PaginatorService } from '../../templates/paginator.service';
 import { SnackBarService } from 'src/app/snackbar/snackbar.service';
 import { EMPTY } from 'rxjs';
+import { DialogListUnitsComponent } from '../../shared/dialog/dialog-list-units/dialog-list-units.component';
+import { EmployeeDialogEditionComponent } from '../../views/employee/employee-dialog-edition/employee-dialog-edition.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -28,19 +30,22 @@ export class EmployeeListComponent {
 
   searchField: string = "Filtrar por nome";
 
-  disabled: boolean = true;
+  msg: string = "";
+  disabled: boolean = false;
   addHidden: boolean = false;
-
-  teste: boolean = false;
+  dataEdition: any = {
+    cpf: '',
+    cel_phone: '',
+  }
 
   constructor(private employeeService:EmployeeService, private cardService: CardService, private router: Router, 
     private authService: AuthService, private authGuardService: AuthGuardService, private dialog: MatDialog,
     private filterService: FilterService, private paginatorService: PaginatorService, private snackBar:SnackBarService) {
       cardService.subtitle = {
         text: 'Lista de Colaboradores',
-        icon: 'engineering',
+        icon: 'badge',
       }
-    }
+  }
 
   ngOnInit(): void {
     this.getAll();
@@ -54,7 +59,7 @@ export class EmployeeListComponent {
       }
       this.authGuardService.guard.token = res.user.token;
       this.authGuardService.guard.name = res.user.name;
-      (res.user.allowable_level > 3)?this.disabled=false:EMPTY;      
+      //(res.user.allowable_level > 3)?this.disabled=false:EMPTY;      
     })
   }
 
@@ -105,4 +110,15 @@ export class EmployeeListComponent {
     })
   }
 
+  public updatesEmployee(employee: any): void {
+    const dialogRef = this.dialog.open(EmployeeDialogEditionComponent,{
+      data: {id: employee.id, name: employee.name, cpf: employee.cpf, cel_phone: employee.cel_phone}
+    })
+    dialogRef.afterClosed().subscribe( (res: any) => {
+      this.employees = [];
+      this.getAll();
+      this.cardService.subtitle.text = 'Lista de Colaboradores';
+      this.cardService.subtitle.icon = 'badge'; 
+    })      
+  }
 }

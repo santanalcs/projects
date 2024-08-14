@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listEmployees = exports.createEmployee = exports.ping = void 0;
+exports.editEmployee = exports.listEmployees = exports.createEmployee = exports.ping = void 0;
 const express_validator_1 = require("express-validator");
 const Employees_1 = require("../db/models/Employees");
 const ping = (req, res) => {
@@ -23,6 +23,12 @@ const createEmployee = (req, res) => __awaiter(void 0, void 0, void 0, function*
         return;
     }
     const data = (0, express_validator_1.matchedData)(req);
+    const employee = yield Employees_1.Employee.findOne({ where: { cpf: data.cpf } });
+    if (employee) {
+        res.json({ error: { cpf: { msg: 'CPF ' + data.cpf + ' ja cadastrado!' } } });
+        return;
+    }
+    ;
     let name = data.name.toUpperCase();
     let cpf = data.cpf;
     let cel_phone = data.cel_phone;
@@ -36,3 +42,34 @@ const listEmployees = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     employees ? res.json({ employees }) : res.json({ error: { msg: 'Sem cadastro!' } });
 });
 exports.listEmployees = listEmployees;
+const editEmployee = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const errors = (0, express_validator_1.validationResult)(req);
+    if (!errors.isEmpty()) {
+        res.json({ error: errors.mapped() });
+        return;
+    }
+    const data = (0, express_validator_1.matchedData)(req);
+    //console.log("Matched " + data.level);
+    let id = parseInt(req.params.id);
+    /*const user = await Employee.findOne({where:{cpf:data.cpf}});
+        
+    if(user){
+        res.json({error:{cpf:{msg:'CPF ' + data.cpf + ' ja cadastrado!'}}});
+        return;
+    };*/
+    const employee = yield Employees_1.Employee.findByPk(id);
+    if (!employee) {
+        res.json({ error: { msg: 'Colaborador não encontrado!' } });
+        return;
+    }
+    if (employee) {
+        //em.allowable_level = data.level;
+        employee.name = data.name.toUpperCase();
+        employee.cpf = data.cpf;
+        employee.cel_phone = data.cel_phone;
+        yield employee.save();
+        res.json({ success: { msg: "Dados alterados com sucesso!" } });
+    }
+    ;
+});
+exports.editEmployee = editEmployee;

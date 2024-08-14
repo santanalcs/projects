@@ -21,10 +21,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const employeeController = __importStar(require("../controllers/employeeController"));
-const permissionLevel = __importStar(require("..//middlewares/permisionLevel"));
+const employeePermission = __importStar(require("../middlewares/permissions/employeePermission"));
 const employeeValidator_1 = require("../middlewares/validators/employeeValidator");
 const router = (0, express_1.Router)();
 router.get('/ping/emloyee', employeeController.ping);
 router.get('/colaboradores', employeeController.listEmployees);
-router.post('/colaborador/?', permissionLevel.permissionLevel4, employeeValidator_1.createValidator, employeeController.createEmployee);
+router.post('/colaborador/?', employeePermission.permissionLevel4, employeeValidator_1.createValidator, employeeController.createEmployee);
+router.patch('/colaborador/?', employeePermission.permissionLevel4, employeeValidator_1.createValidator, employeeController.editEmployee);
 exports.default = router;

@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 import { Measure } from 'src/app/models/measures-unit.model';
@@ -37,8 +36,8 @@ export class UnitsListComponent {
   @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator | undefined;
 
   constructor(private unitService: MeasuresUnitService, private cardService: CardService, private router: Router, 
-    private authService: AuthService, private authGuardService: AuthGuardService, private dialog: MatDialog,
-    private filterService: FilterService, private paginatorService: PaginatorService, private snackBar:SnackBarService) {
+    private authService: AuthService, private authGuardService: AuthGuardService, private filterService: FilterService, 
+    private paginatorService: PaginatorService, private snackBar:SnackBarService) {
     cardService.subtitle = {
       text: 'Lista de Unidades de Medidas',
       icon: 'straighten',
@@ -114,6 +113,7 @@ export class UnitsListComponent {
           description: res.units[i].description,
           group: res.units[i].id_group_criterion
         })
+        console.log(res.units[i])
       }
       /*if(this.pageSize == 0){
         this.pageSize = this.sizeOptions[0];

@@ -49,18 +49,9 @@ export class DialogListUnitsComponent {
     if(event == ''){
       this.units = [];
       this.getAll();
-      //this.currentPage = 0;
-      //this.paginate(this.currentPage);
       return
     }
-    /*let filter:any = [];
-    filter = () => {
-      return this.units.filter((data: Measure) => data.description.toLowerCase().indexOf(event.toLowerCase()) > -1);
-    }*/
     this.units = this.filterService.filterDescription(this.units, event);
-    //this.totalSize = this.units.length;
-    //this.currentPage = 0;
-    //this.paginate(this.currentPage);
     this.dataSource = this.units
   }
   

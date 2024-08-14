@@ -17,4 +17,12 @@ export class FilterService {
   public filterDescription(data: any, event: string) {
     return data.filter((data: DataFilter) => data.description.toLowerCase().indexOf(event.toLowerCase()) > -1);
   }
+
+  public filterContractor(data: any, event: string) {
+    return data.filter((data: DataFilter) => data.contractor.toLowerCase().indexOf(event.toLowerCase()) > -1);
+  }
+
+  public filterStep(data: any, event: string) {
+    return data.filter((data: DataFilter) => data.step.toLowerCase().indexOf(event.toLowerCase()) > -1);
+  }
 }

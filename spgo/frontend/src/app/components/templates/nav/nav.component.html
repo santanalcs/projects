@@ -12,10 +12,16 @@
                     <i class="material-icons">perm_identity</i>Cadastrar Usuário 
                 </a>
                 <a mat-list-item routerLink="colaborador/cadastrar">
-                    <i class="material-icons">engineering</i>Cadastrar Colaborador 
+                    <i class="material-icons">badge</i>Cadastrar Colaborador 
+                </a>
+                <a mat-list-item routerLink="contratador/cadastrar">
+                    <i class="material-icons">engineering</i>Cadastrar Empreiteiro 
                 </a>
                 <a mat-list-item routerLink="insumo/cadastrar">
                     <i class="material-icons">inventory_2</i>Cadastrar Insumo 
+                </a>
+                <a mat-list-item routerLink="etapa/cadastrar">
+                    <i class="material-icons">tab</i>Cadastrar Etapa 
                 </a>
                 <a mat-list-item routerLink="unidade/medida/cadastrar">
                     <i class="material-icons">straighten</i>Unidade Medida 
@@ -32,7 +38,24 @@
                     <i class="material-icons">group</i>Lista de Usuários
                 </button>
                 <button mat-menu-item routerLink="listar/colaboradores">
-                    <i class="material-icons">engineering</i>Lista de Claoradores
+                    <i class="material-icons">badge</i>Lista de Colaboradores
+                </button>
+                <button mat-menu-item [matMenuTriggerFor]="contractor">
+                    <i class="material-icons">engineering</i>Empreiteiro
+                </button>
+                <mat-menu #contractor="matMenu">
+                    <a mat-list-item routerLink="listar/empreiteiros">
+                        <i class="material-icons">engineering</i>Lista de Empreiteiros 
+                    </a>
+                    <a mat-list-item routerLink="listar/empreiteiros/contatos">
+                        <i class="material-icons">contact_page</i>Lista de Contatos 
+                    </a>
+                    <a mat-list-item routerLink="listar/empreiteiros/enderecos">
+                        <i class="material-icons">home</i>Lista de Endereços 
+                    </a>
+                </mat-menu>
+                <button mat-menu-item routerLink="listar/etapas">
+                    <i class="material-icons">tab</i>Lista de Etapas
                 </button>
                 <button mat-menu-item routerLink="listar/insumos">
                     <i class="material-icons">inventory_2</i>Lista de Insumos

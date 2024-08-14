@@ -9,7 +9,7 @@ export interface MeasuresUnit extends Model {
     id_group_criterion: number,
 }
 
-export const Measure = connection.define<MeasuresUnit>('measure', {
+export const Measure = connection.define<MeasuresUnit>('measures', {
     id:{
         primaryKey: true,
         autoIncrement: true,

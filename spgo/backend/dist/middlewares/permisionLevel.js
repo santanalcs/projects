@@ -18,17 +18,13 @@ function permissionLevel4(req, res, next) {
             next();
             return;
         }
-        else if (req.body.cel_phone != null) {
+        if (req.body.cel_phone != null) {
             let regex = '^([0-9]{2} ?[0-9]{5}[\-]?[0-9]{4})$';
             let cel_phone = req.body.cel_phone.match(regex);
             if (!cel_phone) {
                 next();
                 return;
             }
-        }
-        else {
-            next();
-            return;
         }
         const user = yield UsersLogin_1.User.findOne({ where: { token: req.query.token } });
         if (!user) {

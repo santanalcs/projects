@@ -3,9 +3,7 @@ import { CardService } from '../../templates/card.service';
 import { AuthGuardService } from 'src/app/guards/authguard.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../user/auth.service';
-import { leadingComment } from '@angular/compiler';
 import { Employee } from 'src/app/models/employee.model';
-import { EMPTY } from 'rxjs';
 import { EmployeeService } from './employee.service';
 import { NgForm } from '@angular/forms';
 import { SnackBarService } from 'src/app/snackbar/snackbar.service';
@@ -39,7 +37,7 @@ export class EmployeeComponent {
     private snackBar:SnackBarService) {
     cardService.subtitle = {
       text: 'Cadastrar Colaborador',
-      icon: 'engineering',
+      icon: 'badge',
     }
   }
 
@@ -60,13 +58,13 @@ export class EmployeeComponent {
     //console.log(this.allowable_level)
   }
 
-  public get allowable_level(): number {
+  /*public get allowable_level(): number {
     return this.authGuardService.guard.allowable_level
-  }
+  }*/
 
   public maskCpfCnpj():void{ 
     this.mask = this.person=='física'?'###.###.###-##':'###.###.###/####-##';
-    this. maxlength_input_cpf = this.person=='física'?'14':'19';
+    this.maxlength_input_cpf = this.person=='física'?'14':'19';
     let i = this.employee.cpf.length;
     let output = '#';
     let text = this.mask.substring(i);

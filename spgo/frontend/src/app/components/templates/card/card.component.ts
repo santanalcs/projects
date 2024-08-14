@@ -10,7 +10,7 @@ export class CardComponent {
   constructor(private cardService: CardService) {}
 
   public get text(): string {
-    return this.cardService.subtitle.text;
+      return this.cardService.subtitle.text;
   }
 
   public get icon(): string {

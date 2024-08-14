@@ -1,0 +1,37 @@
+<mat-card class="mt-main-comp-view mat-elevation-z3">    
+    <form class="form-col-1" #formCreateAddress="ngForm">
+        <mat-form-field>
+            <mat-label>#Empreiteiro:</mat-label>
+            <select  matNativeControl name="contractor" (click)="openListSelect()" #contractorSelect>
+                <option  label = "---selecione um valor---"></option> 
+                <option  value = "{{address.id_contractor}}" selected="{{selected}}">{{address.name_contractor}}</option>   
+            </select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Endereço:</mat-label>
+            <input  matInput type="text" [(ngModel)]="address.address" name="address" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Bairro:</mat-label>
+            <input  matInput type="text" [(ngModel)]="address.district" name="district" autocomplete="off">
+        </mat-form-field>
+        <div class="div-flex-row">
+            <mat-form-field id="cep">
+                <mat-label>CEP:</mat-label>
+                <input  matInput type="text" maxlength="{{ maxlength_input_tel }}" [(ngModel)]="address.zip_code" (keyup)="maskCep()" name="zip-code" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field id="city">
+                <mat-label>Cidade:</mat-label>
+                <input  matInput type="text" [(ngModel)]="address.city" name="city" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field id="uf">
+                <mat-label>UF:</mat-label>
+                <input  matInput type="text" [(ngModel)]="address.uf" name="uf" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </form>
+    <div class="div-form-col-1">
+        <button mat-raised-button (click)="confirm()" color="primary">Cadastrar</button>
+        <button mat-raised-button (click)="comeBack()" color="warn" [disabled]="disabled">Voltar</button>
+    </div>
+</mat-card>

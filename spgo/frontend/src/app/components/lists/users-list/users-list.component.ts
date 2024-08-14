@@ -38,7 +38,7 @@ export class UsersListComponent {
   msg: string = "";
   disabled: boolean = true;
   addHidden: boolean = false;
-  dataEdit: any = {
+  dataEdition: any = {
     name: '',
     level: 0,
   }
@@ -166,8 +166,8 @@ export class UsersListComponent {
     } 
     dialogRef.afterClosed().subscribe( (res: any) => {
       if(res){
-        this.dataEdit = {id: res.id, name: res.name, level: res.level};
-        this.userService.editAllowableLevel(this.dataEdit).subscribe((res) => {
+        this.dataEdition = {id: res.id, name: res.name, level: res.level};
+        this.userService.editAllowableLevel(this.dataEdition).subscribe((res) => {
           res.error?this.msg = res.error.level.msg:error=false;
           res.success?this.msg = res.success.msg:error=true;
           this.users = [];

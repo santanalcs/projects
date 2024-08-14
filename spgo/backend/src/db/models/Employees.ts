@@ -7,7 +7,7 @@ export interface Employee extends Model {
     cpf: string,
     cel_phone: string,
 }
-export const Employee = connection.define<Employee> ('employee', {
+export const Employee = connection.define<Employee> ('employees', {
     id:{
         primaryKey: true,
         autoIncrement: true,
