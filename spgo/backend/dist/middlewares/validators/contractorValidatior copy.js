@@ -1,38 +1,39 @@
-import { checkSchema } from "express-validator";
-
-export const createValidator = checkSchema ({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createAddressValidator = exports.createContatctValidator = exports.createValidator = void 0;
+const express_validator_1 = require("express-validator");
+exports.createValidator = (0, express_validator_1.checkSchema)({
     name: {
         optional: false,
         notEmpty: true,
-        errorMessage:'Nome é obrigatório!',
+        errorMessage: 'Nome é obrigatório!',
     },
     type_person: {
         optional: false,
         notEmpty: true,
-        errorMessage:'Tipo pessoa é obrigatório!',
+        errorMessage: 'Tipo pessoa é obrigatório!',
     },
     cpf_cnpj: {
         optional: false,
         trim: true,
         notEmpty: true,
-        errorMessage:'CPF/CNPJ, é obrigatório!',
+        errorMessage: 'CPF/CNPJ, é obrigatório!',
         matches: {
             options: '^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[\-]?[0-9]{2}|[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[\-]?[0-9]{2})$',
-            errorMessage:'Formato para CPF ou CNPJ não válido!',
+            errorMessage: 'Formato para CPF ou CNPJ não válido!',
         },
     },
-})
-
-export const createContatctValidator = checkSchema ({
-    id_contractor: {
+});
+exports.createContatctValidator = (0, express_validator_1.checkSchema)({
+    name_contractor: {
         optional: false,
         notEmpty: true,
-        errorMessage:'Empreiteiro obrigatório!',
+        errorMessage: 'Empreiteiro obrigatório!',
     },
     contact: {
         optional: false,
         notEmpty: true,
-        errorMessage:'Contato obrigatório!',
+        errorMessage: 'Contato obrigatório!',
     },
     cel_phone: {
         optional: false,
@@ -41,31 +42,30 @@ export const createContatctValidator = checkSchema ({
         errorMessage: 'Número do celular é obrigatório!',
         matches: {
             options: '^([0-9]{2} ?[0-9]{5}[\-]?[0-9]{4})$',
-            errorMessage:'Formato para celular não válido!',
+            errorMessage: 'Formato para celular não válido!',
         },
     },
     email: {
         optional: false,
         isLength: {
-            options: {min: 1},
-            errorMessage: 'Email é obrigatório!', 
+            options: { min: 1 },
+            errorMessage: 'Email é obrigatório!',
         },
         isEmail: true,
         normalizeEmail: true,
-        errorMessage:'E-mail inválido!',
-    },   
-})
-
-export const createAddressValidator = checkSchema ({
+        errorMessage: 'E-mail inválido!',
+    },
+});
+exports.createAddressValidator = (0, express_validator_1.checkSchema)({
     address: {
         optional: false,
         notEmpty: true,
-        errorMessage:'Endereço é obrigatório!',
+        errorMessage: 'Endereço é obrigatório!',
     },
     district: {
         optional: false,
         notEmpty: true,
-        errorMessage:'Bairro é obrigatório!',
+        errorMessage: 'Bairro é obrigatório!',
     },
     zip_code: {
         optional: false,
@@ -74,13 +74,13 @@ export const createAddressValidator = checkSchema ({
         errorMessage: 'CEP é obrigatório!',
         matches: {
             options: '^([0-9]{5}[\-]?[0-9]{3})$',
-            errorMessage:'Formato para CEP não válido!',
+            errorMessage: 'Formato para CEP não válido!',
         },
     },
     city: {
         optional: false,
         notEmpty: true,
-        errorMessage:'Cidade é obrigatório!',
+        errorMessage: 'Cidade é obrigatório!',
     },
     uf: {
         optional: false,
@@ -88,12 +88,12 @@ export const createAddressValidator = checkSchema ({
         notEmpty: true,
         errorMessage: 'UF é obrigatório!',
         isLength: {
-            options: {max: 3},
-            errorMessage: 'UF máximo 3 caracteres!', 
+            options: { max: 3 },
+            errorMessage: 'UF máximo 3 caracteres!',
         },
         matches: {
             options: '^([A-Za-z]{1,3})$',
-            errorMessage:'Caracteres não permitidos!',
-        },  
+            errorMessage: 'Caracteres não permitidos!',
+        },
     },
-})
+});

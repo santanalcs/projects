@@ -9,8 +9,8 @@ import { ContractorService } from './contractor.service';
 import { SnackBarService } from 'src/app/snackbar/snackbar.service';
 import { ConfirmComponent } from '../../shared/dialog/confirm/confirm.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ContactDialogCreateComponent } from './contact/contact-dialog-create/contact-dialog-create.component';
 import { EmployeeService } from '../employee/employee.service';
+import { DialogAddContactComponent } from '../../shared/dialog/dialog-add-contact/dialog-add-contact.component';
 
 @Component({
   selector: 'app-contractor',
@@ -101,12 +101,23 @@ export class ContractorComponent {
         this.contractor.id = res.contractor.id;
       })
         const dialogRef = this.dialog.open(ConfirmComponent,{
-          data: `Incluir contato e endereço para: ${contractor.name.toUpperCase()}`,
+          data: {msg:`Incluir contato e endereço para: ${contractor.name.toUpperCase()}`},
         }) 
         dialogRef.afterClosed().subscribe( (res: boolean) => {
           if(res) {
-            const dialogRef = this.dialog.open(ContactDialogCreateComponent,{
-              data: {id_contractor: this.contractor.id, contractor: this.contractor.name.toUpperCase()},
+            const dialogRef = this.dialog.open(DialogAddContactComponent,{
+              data: {
+                entity: "Empreiteiro",
+                id_contractor: this.contractor.id,
+                //id_contractor: contractor.cpf_cnpj,
+                contractor: this.contractor.name.toUpperCase(), 
+                cpf_cnpj: contractor.cpf_cnpj,
+                contact: "",
+                cel_phone: "",
+                email: "",
+                //atction: 'Cadastrar',
+                origin: 'page',
+                },
             })
             this.contractor.type_person = this.person!.nativeElement.value = "";
             this.formContractor.resetForm();

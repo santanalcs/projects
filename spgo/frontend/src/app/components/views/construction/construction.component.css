@@ -1,0 +1,31 @@
+.small-input {
+  max-width: 29rem;
+}
+
+.midle-input {
+   
+   min-width: 57rem;
+ }
+
+.large-input {
+    
+    max-width: 76.5rem;
+ }
+
+.resp-input {
+    container-name: width-input;
+    container-type: inline-size;
+}
+
+@container width-input (max-width: 1150px){
+   .small-input {
+      max-width:19.5rem;
+    } 
+   .midle-input {
+       min-width: 44.8rem;
+     }
+
+     .large-input {
+        max-width: 64.4rem;
+     }
+}

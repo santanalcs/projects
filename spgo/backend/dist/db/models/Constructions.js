@@ -18,20 +18,11 @@ exports.Construction = mysql_1.connection.define('constructions', {
     owner_cpf: {
         type: sequelize_1.DataTypes.STRING,
     },
-    owner_rg: {
-        type: sequelize_1.DataTypes.STRING,
-    },
     liable_engineer: {
         type: sequelize_1.DataTypes.STRING,
     },
     engineer_registration: {
         type: sequelize_1.DataTypes.STRING,
-    },
-    area_m2: {
-        type: sequelize_1.DataTypes.FLOAT,
-    },
-    value_m2: {
-        type: sequelize_1.DataTypes.FLOAT,
     },
 }, {
     tableName: 'constructions',

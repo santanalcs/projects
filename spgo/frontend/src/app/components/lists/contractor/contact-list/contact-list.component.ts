@@ -12,6 +12,7 @@ import { SnackBarService } from 'src/app/snackbar/snackbar.service';
 import { EMPTY, timeInterval, timeout } from 'rxjs';
 import { ContactDialogAddComponent } from 'src/app/components/views/contractor/contact/contact-dialog-add/contact-dialog-add.component';
 import { ConfirmComponent } from 'src/app/components/shared/dialog/confirm/confirm.component';
+import { DialogAddContactComponent } from 'src/app/components/shared/dialog/dialog-add-contact/dialog-add-contact.component';
 
 @Component({
   selector: 'app-contact-list',
@@ -125,18 +126,22 @@ export class ContactListComponent {
   }
 
   public addContact(contact: any): void {
-    const dialogRef = this.dialog.open(ContactDialogAddComponent,{
+    const dialogRef = this.dialog.open(DialogAddContactComponent,{
       data: {
+        entity: 'Empreiteiro',
         id_contractor: contact.id_contractor, 
         contractor: contact.contractor,
-        contact_atction: 'Cadastrar',
+        atction: 'Cadastrar',
+        //origin: 'list',
       }
     })
-    dialogRef.beforeClosed().subscribe( (res: boolean) => {
+    /*dialogRef.beforeClosed().subscribe( (res: boolean) => {
       this.cardService.subtitle.text = 'Lista de Contatos';
       this.cardService.subtitle.icon = 'contact_page';
-    })
+    })*/
     dialogRef.afterClosed().subscribe( (res: boolean) => {
+      this.cardService.subtitle.text = 'Lista de Contatos';
+      this.cardService.subtitle.icon = 'contact_page';
       this.contacts = [];
       this.getAll();
     })
@@ -166,7 +171,7 @@ export class ContactListComponent {
 
   public deleteContact(contact: any): void {
       const dialogRef = this.dialog.open(ConfirmComponent,{
-        data: `Confirma exluir! #Contato: ${contact.contact}`,
+        data: {msg:`Confirma exluir! #Contato: ${contact.contact}`},
       }) 
     dialogRef.beforeClosed().subscribe( (res: boolean) => {
       if(res) {

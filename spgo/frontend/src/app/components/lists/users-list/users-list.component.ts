@@ -138,7 +138,7 @@ export class UsersListComponent {
 
   public confirmDelete(user: any): void {
     const dialogRef = this.dialog.open(ConfirmComponent,{
-      data: `Confirma exluir registro! #Id:${user.id}`,
+      data: {msg:`Confirma exluir registro! #Id:${user.id}`},
     }) 
     dialogRef.afterClosed().subscribe( (res: boolean) => {
       if(res) {

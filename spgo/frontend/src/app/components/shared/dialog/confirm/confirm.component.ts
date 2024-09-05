@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -7,11 +7,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./confirm.component.css']
 })
 export class ConfirmComponent {
+  hidden: boolean = false
+  btn: string = 'Sim'
 
-  constructor(public dialogRef: MatDialogRef<ConfirmComponent>, @Inject (MAT_DIALOG_DATA) public data: string) {}
-    
+  constructor(public dialogRef: MatDialogRef<ConfirmComponent>, @Inject (MAT_DIALOG_DATA) public data: any) {}
+
   ngOnInit(): void {
-
+    if(this.data.hidden){
+      this.hidden = this.data.hidden;
+      this.btn = this.data.btn;
+    }
   }
 
   public confirm(res: boolean): void {

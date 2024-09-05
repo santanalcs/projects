@@ -7,6 +7,8 @@ import { SnackBarService } from 'src/app/snackbar/snackbar.service';
 import { AddressDialogCreateComponent } from '../../address/address-dialog-create/address-dialog-create.component';
 import { AuthService } from '../../../user/auth.service';
 import { AuthGuardService } from 'src/app/guards/authguard.service';
+//import { DialogCreateAddressComponent } from 'src/app/components/shared/dialog/dialog-create-address/dialog-create-address.component';
+import { DialogAddAddressComponent } from 'src/app/components/shared/dialog/dialog-add-address/dialog-add-address.component';
 
 @Component({
   selector: 'app-contact-dialog-create',
@@ -17,13 +19,13 @@ export class ContactDialogCreateComponent {
   msg: string = "";
   isError: boolean = false;
 
-contact: Contact = {
-  id_contractor: this.data.id_contractor,
-  name_contractor: this.data.contractor,
-  contact: '',
-  cel_phone: '',
-  email: '',
-}
+  contact: Contact = {
+    id_contractor: this.data.id_contractor,
+    name_contractor: this.data.contractor,
+    contact: '',
+    cel_phone: '',
+    email: '',
+  }
 
 mask: string = '';
 maxlength_input_tel: string = '';
@@ -72,11 +74,20 @@ maxlength_input_tel: string = '';
       }else if (res.success){
         this.msg = res.success.msg;
         this .dialogRef.close(res);
-        
+
+        this.contractorService.indexContractor(this.data.cpf_cnpj).subscribe(res => {
+          console.log(res)
+          this.contact.id_contractor = res.contractor.cpf_cnpj;
+        })
         dialogRef.afterClosed().subscribe( (res: boolean) => {
           if(res){
-            const dialogRef = this.dialog.open(AddressDialogCreateComponent,{
-              data: {id_contractor: this.data.id_contractor, contractor: this.data.contractor.toUpperCase()},
+            const dialogRef = this.dialog.open(DialogAddAddressComponent,{
+              data: {
+                id_contractor: this.contact.id_contractor, 
+                contractor: this.data.contractor.toUpperCase(),
+                atction: 'Cadastrar',
+                origin: 'dialog',
+              },
             })
           }
         })

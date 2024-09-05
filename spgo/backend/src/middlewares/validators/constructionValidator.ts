@@ -23,12 +23,6 @@ export const createValidator = checkSchema ({
             errorMessage:'Formato para CPF não válido!',
         },
     },
-    owner_rg: {
-        optional: false,
-        trim: true,
-        notEmpty: true,
-        errorMessage:'RG do proprietário é obrigatório!',
-    },
     liable_engineer: {
         optional: false,
         trim: true,
@@ -41,7 +35,7 @@ export const createValidator = checkSchema ({
         notEmpty: true,
         errorMessage:'Registro CREA do responsável é obrigatório!',
     },
-    area_m2: {
+    /*area_m2: {
         optional: false,
         trim: true,
         notEmpty: true,
@@ -60,5 +54,47 @@ export const createValidator = checkSchema ({
             options: '^([0-9]{1,4}[\,][0-9]{1,3})$',
             errorMessage:'Formato numérico não aceito!',
         },
-    },    
+    },*/    
+})
+
+export const createAddressValidator = checkSchema ({
+    address: {
+        optional: false,
+        notEmpty: true,
+        errorMessage:'Endereço é obrigatório!',
+    },
+    district: {
+        optional: false,
+        notEmpty: true,
+        errorMessage:'Bairro é obrigatório!',
+    },
+    zip_code: {
+        optional: false,
+        trim: true,
+        notEmpty: true,
+        errorMessage: 'CEP é obrigatório!',
+        matches: {
+            options: '^([0-9]{5}[\-]?[0-9]{3})$',
+            errorMessage:'Formato para CEP não válido!',
+        },
+    },
+    city: {
+        optional: false,
+        notEmpty: true,
+        errorMessage:'Cidade é obrigatório!',
+    },
+    uf: {
+        optional: false,
+        trim: true,
+        notEmpty: true,
+        errorMessage: 'UF é obrigatório!',
+        isLength: {
+            options: {max: 3},
+            errorMessage: 'UF máximo 3 caracteres!', 
+        },
+        matches: {
+            options: '^([A-Za-z]{1,3})$',
+            errorMessage:'Caracteres não permitidos!',
+        },  
+    },
 })

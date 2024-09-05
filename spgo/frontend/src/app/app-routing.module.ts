@@ -22,6 +22,7 @@ import { ContactComponent } from './components/views/contractor/contact/contact.
 import { AddressComponent } from './components/views/contractor/address/address.component';
 import { StepComponent } from './components/views/step/step.component';
 import { StepListComponent } from './components/lists/step-list/step-list.component';
+import { ConstructionComponent } from './components/views/construction/construction.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'unidade/medida/cadastrar', component: MeasuresUnitComponent, canActivate: [authGuard] },
   { path: 'insumo/cadastrar', component: FeedstockComponent, canActivate: [authGuard] },
   { path: 'etapa/cadastrar', component: StepComponent, canActivate: [authGuard] },
+  { path: 'obra/cadastrar', component: ConstructionComponent, canActivate: [authGuard] },
   { path: 'listar/usuarios', component: UsersListComponent, canActivate: [authGuard] },
   { path: 'listar/colaboradores', component: EmployeeListComponent, canActivate: [authGuard] },
   { path: 'listar/empreiteiros', component: ContractorListComponent, canActivate: [authGuard] },

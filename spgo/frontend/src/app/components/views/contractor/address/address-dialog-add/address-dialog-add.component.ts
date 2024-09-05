@@ -16,6 +16,8 @@ export class AddressDialogAddComponent {
   msg: string = "";
   isError: boolean = false;
 
+  entity: string = "Empreiteiro"
+
   disabled = false;
 
   address: Address = {
@@ -57,6 +59,9 @@ export class AddressDialogAddComponent {
       this.address.city = this.data.city;
       this.address.uf = this.data.uf;
       this.disabled = true;
+    }
+    if(this.data.entity){
+      this.entity = this.data.entity;
     }
   }
 

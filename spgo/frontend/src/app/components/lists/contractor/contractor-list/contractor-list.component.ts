@@ -134,7 +134,7 @@ export class ContractorListComponent {
 
   public deleteContractor(contractor: any): void {
     const dialogRef = this.dialog.open(ConfirmComponent,{
-      data: `Confirma exluir! #Empreiteiro: ${contractor.name}`,
+      data: {msg:`Confirma exluir! #Empreiteiro: ${contractor.name}`},
     }) 
     dialogRef.beforeClosed().subscribe( (res: boolean) => {
       if(res) {

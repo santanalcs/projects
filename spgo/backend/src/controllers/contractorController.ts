@@ -31,6 +31,7 @@ export const createContractor = async (req: Request, res: Response) => {
     let newContractor = await Contractor.create({ name, type_person, cpf_cnpj});
     
     res.json({success:{msg:`Empreitero ${newContractor.name} cadastrado com sucesso.`}});
+    //res.json({success:{msg:`Empreitero ${name} cadastrado com sucesso.`}});
 }
 
 export const listContractors = async (req: Request, res: Response) => {
@@ -44,8 +45,9 @@ export const listContractors = async (req: Request, res: Response) => {
 
 export const getContractor = async (req: Request, res: Response) => {
     let contractor = await Contractor.findOne({where:{cpf_cnpj:req.query.cpf_cnpj}});
-
+    //let cpf_cnpj = req.query.cpf_cnpj
     res.json({contractor})
+   // res.json({contractor: {cpf_cnpj}})
 }
 
 export const createContact = async (req: Request, res: Response) => {

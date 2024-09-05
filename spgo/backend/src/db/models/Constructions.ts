@@ -28,22 +28,12 @@ export const Construction = connection.define<Construction>('constructions', {
     owner_cpf: {
         type: DataTypes.STRING,
     },
-    owner_rg: {
-        type: DataTypes.STRING,
-    },
     liable_engineer: {
         type: DataTypes.STRING,
     },
     engineer_registration: {
         type: DataTypes.STRING,
     },
-    area_m2: {
-        type: DataTypes.FLOAT,
-    },
-    value_m2: {
-        type: DataTypes.FLOAT,
-    },
-
 }, {
     tableName: 'constructions',
     timestamps: true,

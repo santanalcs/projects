@@ -1,0 +1,36 @@
+<mat-card class="mt-main-comp-view mat-elevation-z3">    
+    <form class="form-col-1 resp-input" #formConstruction="ngForm">
+        <mat-form-field class="large-input">
+            <mat-label>Tipo/Padrão:</mat-label>
+            <!--input  matInput type="text" [(ngModel)]="construction.pattern_type" name="pattern-type" autocomplete="off"-->
+            <select  matNativeControl (change)="onChangePatternType($event)" name="pattern-type" #pattern_typeSelect>
+                <option  label = "---selecione um valor---"></option> 
+                <option  *ngFor="let pattern_type of patterns_types" [value]="pattern_type.acronym">{{pattern_type.description}}</option>   
+            </select>
+        </mat-form-field>
+        <div class="div-flex-row resp-input">
+            <mat-form-field class="midle-input">
+                <mat-label>ART:</mat-label>
+                <input  matInput type="text" [(ngModel)]="construction.liable_engineer" name="liable-engineer" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field class="small-input">
+                <mat-label>CREA:</mat-label>
+                <input  matInput type="text" [(ngModel)]="construction.engineer_registration" name="engineer-registration" autocomplete="off">
+            </mat-form-field>
+        </div>
+        <div class="div-flex-row">
+            <mat-form-field class="midle-input">
+                <mat-label>Proprietário:</mat-label>
+                <input  matInput type="text" [(ngModel)]="construction.owner" name="owner" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field class="small-input">
+                <mat-label>CPF - Proprietário:</mat-label>
+                <input  matInput type="text" maxlength="{{ maxlength_input_cpf_cnpj}}" [(ngModel)]="construction.owner_cpf" (keyup)="maskCpfCnpj()" name="owner-cpf" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </form>
+    <div class="div-form-col-1">
+        <button mat-raised-button (click)="confirm()" color="primary">Cadastrar</button>
+        <button mat-raised-button color="warn" [disabled]="true">Voltar</button>
+    </div>
+</mat-card>

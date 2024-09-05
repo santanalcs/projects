@@ -63,6 +63,10 @@ import { StepComponent } from './components/views/step/step.component';
 import { StepListComponent } from './components/lists/step-list/step-list.component';
 import { StepDialogEditionComponent } from './components/views/step/step-dialog-edition/step-dialog-edition.component';
 import { CardDialogComponent } from './components/templates/card-dialog/card-dialog.component';
+import { ConstructionComponent } from './components/views/construction/construction.component';
+import { DialogAddAddressComponent } from './components/shared/dialog/dialog-add-address/dialog-add-address.component';
+//import { DialogCreateAddressComponent } from './components/shared/dialog/dialog-create-address/dialog-create-address.component';
+import { DialogAddContactComponent } from './components/shared/dialog/dialog-add-contact/dialog-add-contact.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +110,10 @@ import { CardDialogComponent } from './components/templates/card-dialog/card-dia
     StepListComponent,
     StepDialogEditionComponent,
     CardDialogComponent,
+    ConstructionComponent,
+    DialogAddAddressComponent,
+    //DialogCreateAddressComponent,
+    DialogAddContactComponent,
   ],
   imports: [
     BrowserModule,

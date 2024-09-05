@@ -10,8 +10,9 @@ import { FilterService } from '../../../templates/filter.service';
 import { PaginatorService } from '../../../templates/paginator.service';
 import { SnackBarService } from 'src/app/snackbar/snackbar.service';
 import { EMPTY } from 'rxjs';
-import { AddressDialogAddComponent } from 'src/app/components/views/contractor/address/address-dialog-add/address-dialog-add.component';
+//import { AddressDialogAddComponent } from 'src/app/components/views/contractor/address/address-dialog-add/address-dialog-add.component';
 import { ConfirmComponent } from 'src/app/components/shared/dialog/confirm/confirm.component';
+import { DialogAddAddressComponent } from 'src/app/components/shared/dialog/dialog-add-address/dialog-add-address.component';
 
 @Component({
   selector: 'app-address-list',
@@ -126,16 +127,24 @@ export class AddressListComponent {
   }
 
   public addAddress(address: any): void {
-    const dialogRef = this.dialog.open(AddressDialogAddComponent,{
+    const dialogRef = this.dialog.open(DialogAddAddressComponent,{
       data: {
-        id_contractor: address.id_contractor, 
-        contractor: address.contractor,
-        address_atction: 'Cadastrar',
+        //id_contractor: address.id_contractor, 
+        //contractor: address.contractor,
+        entity: "Empreiteiro",
+        id: address.id_contractor,
+        name: address.contractor.toUpperCase(),
+        address: "",
+        district: "",
+        zip_code: "",
+        city: "",
+        uf: "",
+        action: 'Cadastrar',
       }
     })
     dialogRef.beforeClosed().subscribe( (res: boolean) => {
       this.cardService.subtitle.text = 'Lista de Endereços';
-      this.cardService.subtitle.icon = 'home';
+      //this.cardService.subtitle.icon = 'home';
     })
     dialogRef.afterClosed().subscribe( (res: boolean) => {
       this.addresses = [];
@@ -144,17 +153,20 @@ export class AddressListComponent {
   }
 
   public updateAddress(address: any, ): void {
-    const dialogRef = this.dialog.open(AddressDialogAddComponent,{
+    const dialogRef = this.dialog.open(DialogAddAddressComponent,{
       data: {
-        id_address: address.id,
+        entity: "Empreiteiro",
+        //id_address: address.id,
+        id: address.id,
         id_contractor: address.id_contractor, 
-        contractor: address.contractor,
+        //contractor: address.contractor,
+        name: address.contractor,
         address: address.address,
         district: address.district,
         zip_code: address.zip_code,
         city: address.city,
         uf: address.uf,
-        address_atction: 'Atualizar', 
+        action: 'Atualizar', 
       }
     })
     dialogRef.beforeClosed().subscribe( (res: boolean) => {
@@ -169,7 +181,7 @@ export class AddressListComponent {
 
   public deleteAddress(address: any): void {
     const dialogRef = this.dialog.open(ConfirmComponent,{
-      data: `Confirma exluir! #Endereço: ${address.address}`,
+      data: {msg:`Confirma exluir! #Endereço: ${address.address}`},
     }) 
     dialogRef.beforeClosed().subscribe( (res: boolean) => {
       if(res) {
@@ -183,6 +195,7 @@ export class AddressListComponent {
       }
     })
     dialogRef.afterClosed().subscribe( (res: boolean) => {
+      //console.log(res)
       if(res) {
         setTimeout(() => {
           this.addresses = [];

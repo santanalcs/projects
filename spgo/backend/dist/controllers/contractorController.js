@@ -36,6 +36,7 @@ const createContractor = (req, res) => __awaiter(void 0, void 0, void 0, functio
     let cpf_cnpj = data.cpf_cnpj;
     let newContractor = yield Contractors_1.Contractor.create({ name, type_person, cpf_cnpj });
     res.json({ success: { msg: `Empreitero ${newContractor.name} cadastrado com sucesso.` } });
+    //res.json({success:{msg:`Empreitero ${name} cadastrado com sucesso.`}});
 });
 exports.createContractor = createContractor;
 const listContractors = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -48,7 +49,9 @@ const listContractors = (req, res) => __awaiter(void 0, void 0, void 0, function
 exports.listContractors = listContractors;
 const getContractor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let contractor = yield Contractors_1.Contractor.findOne({ where: { cpf_cnpj: req.query.cpf_cnpj } });
+    //let cpf_cnpj = req.query.cpf_cnpj
     res.json({ contractor });
+    // res.json({contractor: {cpf_cnpj}})
 });
 exports.getContractor = getContractor;
 const createContact = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

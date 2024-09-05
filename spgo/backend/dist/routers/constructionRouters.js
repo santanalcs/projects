@@ -24,5 +24,7 @@ const constructionValidator_1 = require("../middlewares/validators/constructionV
 const constructionController = __importStar(require("../controllers/constructionController"));
 const router = (0, express_1.Router)();
 router.get('/ping/constructor', constructionController.ping);
+router.get('/obra?', constructionController.getConstruction);
 router.post('/obra', constructionValidator_1.createValidator, constructionController.createConstruction);
+router.post('/obra/endereco?', constructionValidator_1.createAddressValidator, constructionController.createAddress);
 exports.default = router;

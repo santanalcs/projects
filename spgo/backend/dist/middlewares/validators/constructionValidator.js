@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createValidator = void 0;
+exports.createAddressValidator = exports.createValidator = void 0;
 const express_validator_1 = require("express-validator");
 exports.createValidator = (0, express_validator_1.checkSchema)({
     pattern_type: {
@@ -25,12 +25,6 @@ exports.createValidator = (0, express_validator_1.checkSchema)({
             errorMessage: 'Formato para CPF não válido!',
         },
     },
-    owner_rg: {
-        optional: false,
-        trim: true,
-        notEmpty: true,
-        errorMessage: 'RG do proprietário é obrigatório!',
-    },
     liable_engineer: {
         optional: false,
         trim: true,
@@ -43,24 +37,65 @@ exports.createValidator = (0, express_validator_1.checkSchema)({
         notEmpty: true,
         errorMessage: 'Registro CREA do responsável é obrigatório!',
     },
-    area_m2: {
+    /*area_m2: {
         optional: false,
         trim: true,
         notEmpty: true,
-        errorMessage: 'Área/m2 é obrigatório!',
+        errorMessage:'Área/m2 é obrigatório!',
         matches: {
             options: '^([0-9]{1,4}[\,][0-9]{1,3})$',
-            errorMessage: 'Formato numérico não aceito!',
+            errorMessage:'Formato numérico não aceito!',
         },
     },
     value_m2: {
         optional: false,
         trim: true,
         notEmpty: true,
-        errorMessage: 'Valor/m2 é obrigatório!',
+        errorMessage:'Valor/m2 é obrigatório!',
         matches: {
             options: '^([0-9]{1,4}[\,][0-9]{1,3})$',
-            errorMessage: 'Formato numérico não aceito!',
+            errorMessage:'Formato numérico não aceito!',
+        },
+    },*/
+});
+exports.createAddressValidator = (0, express_validator_1.checkSchema)({
+    address: {
+        optional: false,
+        notEmpty: true,
+        errorMessage: 'Endereço é obrigatório!',
+    },
+    district: {
+        optional: false,
+        notEmpty: true,
+        errorMessage: 'Bairro é obrigatório!',
+    },
+    zip_code: {
+        optional: false,
+        trim: true,
+        notEmpty: true,
+        errorMessage: 'CEP é obrigatório!',
+        matches: {
+            options: '^([0-9]{5}[\-]?[0-9]{3})$',
+            errorMessage: 'Formato para CEP não válido!',
+        },
+    },
+    city: {
+        optional: false,
+        notEmpty: true,
+        errorMessage: 'Cidade é obrigatório!',
+    },
+    uf: {
+        optional: false,
+        trim: true,
+        notEmpty: true,
+        errorMessage: 'UF é obrigatório!',
+        isLength: {
+            options: { max: 3 },
+            errorMessage: 'UF máximo 3 caracteres!',
+        },
+        matches: {
+            options: '^([A-Za-z]{1,3})$',
+            errorMessage: 'Caracteres não permitidos!',
         },
     },
 });

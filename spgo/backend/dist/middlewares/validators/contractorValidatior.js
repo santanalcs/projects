@@ -25,7 +25,7 @@ exports.createValidator = (0, express_validator_1.checkSchema)({
     },
 });
 exports.createContatctValidator = (0, express_validator_1.checkSchema)({
-    name_contractor: {
+    id_contractor: {
         optional: false,
         notEmpty: true,
         errorMessage: 'Empreiteiro obrigatório!',
