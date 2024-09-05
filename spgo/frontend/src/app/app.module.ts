@@ -53,7 +53,7 @@ import { AddressDialogCreateComponent } from './components/views/contractor/addr
 import { ContractorListComponent } from './components/lists/contractor/contractor-list/contractor-list.component';
 import { ContactListComponent } from './components/lists/contractor/contact-list/contact-list.component';
 import { AddressListComponent } from './components/lists/contractor/address-list/address-list.component';
-import { ContactDialogAddComponent } from './components/views/contractor/contact/contact-dialog-add/contact-dialog-add.component';
+//import { ContactDialogAddComponent } from './components/views/contractor/contact/contact-dialog-add/contact-dialog-add.component';
 import { DialogListContractorComponent } from './components/shared/dialog/dialog-list-contractor/dialog-list-contractor.component';
 import { ContactComponent } from './components/views/contractor/contact/contact.component';
 import { AddressDialogAddComponent } from './components/views/contractor/address/address-dialog-add/address-dialog-add.component';
@@ -100,7 +100,7 @@ import { DialogAddContactComponent } from './components/shared/dialog/dialog-add
     ContractorComponent,
     ContactListComponent,
     AddressListComponent,
-    ContactDialogAddComponent,
+    //ContactDialogAddComponent,
     DialogListContractorComponent,
     ContactComponent,
     AddressDialogAddComponent,

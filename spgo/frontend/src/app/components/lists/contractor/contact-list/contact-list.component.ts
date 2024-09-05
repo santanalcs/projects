@@ -10,7 +10,7 @@ import { FilterService } from '../../../templates/filter.service';
 import { PaginatorService } from '../../../templates/paginator.service';
 import { SnackBarService } from 'src/app/snackbar/snackbar.service';
 import { EMPTY, timeInterval, timeout } from 'rxjs';
-import { ContactDialogAddComponent } from 'src/app/components/views/contractor/contact/contact-dialog-add/contact-dialog-add.component';
+//import { ContactDialogAddComponent } from 'src/app/components/views/contractor/contact/contact-dialog-add/contact-dialog-add.component';
 import { ConfirmComponent } from 'src/app/components/shared/dialog/confirm/confirm.component';
 import { DialogAddContactComponent } from 'src/app/components/shared/dialog/dialog-add-contact/dialog-add-contact.component';
 
@@ -148,7 +148,7 @@ export class ContactListComponent {
   }
 
   public updateContact(contact: any, ): void {
-    const dialogRef = this.dialog.open(ContactDialogAddComponent,{
+    const dialogRef = this.dialog.open(DialogAddContactComponent,{
       data: {
         id_contact: contact.id,
         id_contractor: contact.id_contractor, 

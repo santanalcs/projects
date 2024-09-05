@@ -110,7 +110,7 @@ export class ContractorComponent {
                 entity: "Empreiteiro",
                 id_contractor: this.contractor.id,
                 //id_contractor: contractor.cpf_cnpj,
-                contractor: this.contractor.name.toUpperCase(), 
+                name: this.contractor.name.toUpperCase(), 
                 cpf_cnpj: contractor.cpf_cnpj,
                 contact: "",
                 cel_phone: "",

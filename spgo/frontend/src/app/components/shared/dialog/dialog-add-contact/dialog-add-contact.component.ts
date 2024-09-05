@@ -41,15 +41,15 @@ export class DialogAddContactComponent {
     if(this.data.origin == 'page'){
       const dialogRef = this.dialog.open(DialogAddAddressComponent,{
         data: {
-         id_contractor: this.data.id_contractor, 
-         name: this.data.contractor.toUpperCase(),
-         zip_code: "",
-       },
+          id_contractor: this.data.id_contractor, 
+          name: this.data.name.toUpperCase(),
+          zip_code: "",
+        },
       })
     }
-      this .dialogRef.close();
-      this.cardService.subtitle.text = 'Cadastrar Empreiteiro';
-      this.cardService.subtitle.icon = 'engineering';
+    this .dialogRef.close();
+    this.cardService.subtitle.text = 'Cadastrar Empreiteiro';
+    this.cardService.subtitle.icon = 'engineering';
    }
 
    teste(data: any){
